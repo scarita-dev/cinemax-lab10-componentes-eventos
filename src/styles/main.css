@@ -1,0 +1,15 @@
+/* Entry point: ordered from lowest to highest specificity. */
+@import './base/variables.css';
+@import './base/reset.css';
+@import './base/typography.css';
+@import './base/forms.css';
+@import './layout/layout.css';
+@import './components/button.css';
+@import './components/header.css';
+@import './components/footer.css';
+@import './components/hero.css';
+@import './components/movie-search.css';
+@import './components/movie-list.css';
+@import './components/movie-card.css';
+/* Last: wins ties against component classes with the same specificity. */
+@import './base/utilities.css';

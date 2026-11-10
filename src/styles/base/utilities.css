@@ -1,0 +1,15 @@
+/* Utilities: small reusable classes used by several components.
+   They are imported last in main.css on purpose: with the same specificity as
+   component classes, source order lets them win ties. */
+
+.text-center {
+  text-align: center;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.text-muted {
+  color: var(--color-muted);
+}
