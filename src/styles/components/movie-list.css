@@ -1,14 +1,11 @@
-.movie-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: var(--space-4);
+.movie-section {
+  scroll-margin-top: var(--space-4);
 }
 
-@media (max-width: 700px) {
-  .movie-list {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: var(--space-3);
-  }
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(var(--movie-columns, 1), minmax(0, 1fr));
+  gap: var(--space-4);
 }
 
 /* Empty state: no movie matches the search. */
@@ -26,4 +23,10 @@
 
 .movie-list__empty .lead {
   margin: 0;
+}
+
+@media (max-width: 519px) {
+  .movie-list {
+    gap: var(--space-3);
+  }
 }

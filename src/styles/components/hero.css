@@ -2,11 +2,13 @@
   display: grid;
   grid-template-columns: 260px 1fr;
   gap: var(--space-4);
+  margin-bottom: var(--space-5);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-left: 4px solid var(--color-primary);
   border-radius: var(--radius);
   overflow: hidden;
+  box-shadow: var(--shadow-soft);
 }
 
 .hero__image {
@@ -30,24 +32,30 @@
   color: var(--color-muted);
 }
 
-.hero__eyebrow {
-  margin: 0 0 var(--space-2);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--color-primary);
-}
-
-/* Search integrated in the banner, with its call to action. */
+/* Search integrated in the banner, with its call to action and the clear
+   button that keeps the input and the list synchronized. */
 .hero__search {
   display: flex;
   align-items: flex-end;
+  flex-wrap: wrap;
   gap: var(--space-2);
 }
 
 .hero__search .movie-search {
-  flex: 1;
+  flex: 1 1 240px;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.hero__filter-note {
+  margin: var(--space-2) 0 0;
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 @media (max-width: 700px) {

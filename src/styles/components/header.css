@@ -23,17 +23,68 @@
   color: var(--color-primary);
 }
 
+.header__nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
 .header__nav ul {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-4);
 }
 
 .header__link {
   color: var(--color-muted);
   font-weight: 600;
-  transition: color 0.2s;
+  transition: color var(--transition);
 }
 
 .header__link:hover {
   color: var(--color-accent);
+}
+
+/* Favorites counter: the header only receives the number, never the list. */
+.header__favorites {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.35rem 0.45rem 0.35rem 0.7rem;
+  background: rgba(245, 197, 24, 0.12);
+  border: 1px solid rgba(245, 197, 24, 0.4);
+  border-radius: var(--radius-pill);
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.header__favorites-star {
+  font-size: 0.95rem;
+}
+
+.header__favorites-count {
+  min-width: 1.55rem;
+  padding: 0.1rem 0.4rem;
+  background: var(--color-accent);
+  border-radius: var(--radius-pill);
+  color: #1b1c33;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .header__nav {
+    gap: var(--space-3);
+  }
+
+  .header__nav ul {
+    gap: var(--space-3);
+  }
+
+  .header__favorites-label {
+    display: none;
+  }
 }

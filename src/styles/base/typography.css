@@ -2,11 +2,20 @@ h1,
 h2,
 h3 {
   margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
   line-height: 1.2;
 }
 
 h1 {
   font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.65rem;
+}
+
+h3 {
+  font-size: 1.1rem;
 }
 
 p {
@@ -16,4 +25,14 @@ p {
 .lead {
   font-size: 1.05rem;
   color: var(--color-muted);
+}
+
+/* Small uppercase label used above section titles and inside the banner. */
+.eyebrow {
+  margin: 0 0 var(--space-1);
+  color: var(--color-primary-soft);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }

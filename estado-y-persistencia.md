@@ -1,101 +1,117 @@
-# Estado y persistencia (paso 11)
+# Estado y hooks (Laboratorio 11)
 
-Para cada dato que la aplicación recuerda se indica **en qué componente se decidió
-ponerlo** y **por qué**. La regla común es *elevar el estado al ancestro común* de
-los componentes que lo necesitan, siguiendo el flujo de datos unidireccional de React.
+Este documento registra **dónde vive cada dato** y **qué hook propio** se encarga de
+la lógica reutilizable. La regla común es elevar el estado al **ancestro común** de los
+componentes que lo necesitan y mantener un flujo de datos unidireccional.
 
 ---
 
 ## 1. Lista de favoritas — `favorites`
 
 - **Componente:** `App` (`src/App.jsx`), con `useState`.
-- **Por qué ahí:** la lista la pinta `MovieCard` (nieto) y la recorre `MovieList`
-  (hijo). `App` es su **ancestro común**, así que el estado se eleva para que ambos
-  la lean a través de props (`favorites`, `onToggleFavorite`).
-- **Cómo cambia:** la función `toggleFavorite(movieId)` agrega o quita el id de la
-  lista; se pasa por props hasta el botón de favorita de cada tarjeta. El hijo no
-  modifica el estado del padre: solo llama a la función recibida.
-- **Persistencia (paso 10):** se guarda en `localStorage` con la clave
-  `cinemax:favorites`.
-  - Se **lee** con un inicializador perezoso `useState(loadFavorites)`, solo al
-    montar el componente, para que las favoritas **sobrevivan a una recarga**.
-  - Se **escribe** en un `useEffect` que se dispara cada vez que `favorites` cambia.
-  - `loadFavorites()` hace un `try/catch` y valida que el valor parseado sea un
-    array: si no hay nada, si el almacenamiento está bloqueado o si el JSON está
-    corrupto, devuelve `[]` y la app sigue funcionando.
-  - También se lee la clave antigua `cinemax:favoritas` como respaldo para no perder
-    datos de una versión anterior.
+- **Por qué ahí:** la lista la pinta `MovieCard` (nieto), la recorre `MovieList` (hijo)
+  y `Header` necesita el total. `App` es el ancestro común.
+- **Cómo cambia:** `toggleFavorite(movieId)` agrega o quita el id y muestra el aviso
+  emergente. `MovieCard` solo llama a `onToggleFavorite(movie.id)`.
+- **Persistencia:** se guarda en `localStorage` con la clave `cinemax:favorites`.
+  - Se lee con el inicializador perezoso `useState(loadFavorites)`.
+  - Se escribe en un `useEffect` que se dispara cuando cambia `favorites`.
+  - También se lee la clave antigua `cinemax:favoritas` como respaldo.
+  - `loadFavorites()` valida el JSON y captura excepciones.
 
 ## 2. Texto del buscador — `query`
 
-- **Componente:** `App` (`src/App.jsx`), con `useState`.
-- **Por qué ahí:** lo **escribe** `Hero` (el `MovieSearch` vive dentro del banner) y
-  lo **lee** `MovieList` para filtrar la cartelera. Al estar en `App`, ancestro común
-  de ambos, el mismo estado controla el input y el resultado.
-- **Entrada controlada (paso 6):** `MovieSearch` recibe `value` y `onChange`; el
-  texto vive en el estado y cada pulsación lo actualiza con `event.target.value`.
+- **Componente:** `App`, con `useState`.
+- **Por qué ahí:** lo escribe `Hero` (el `MovieSearch` vive dentro del banner) y lo lee
+  `MovieList` para filtrar. `App` es el ancestro común.
+- **Entrada controlada:** `MovieSearch` recibe `value` y `onChange`; el texto vive en
+  el estado y cada pulsación lo actualiza.
 
-## 3. Texto con retardo — `debouncedQuery`
+## 3. Texto con retardo — `debouncedValue` de `useDebounce`
 
-- **Componente:** `App` (`src/App.jsx`), con `useState`.
-- **Por qué ahí:** es el valor que **realmente usa el filtro**. Vive junto a `query`
-  porque se deriva de él mediante un `useEffect` con `setTimeout(…, 300)`.
-- **Para qué (paso 7):** separar el texto que se pinta en el input del texto que
-  filtra hace que **cada pulsación solo repinta el input** y no recorra la cartelera;
-  el filtrado se aplica cuando el usuario deja de escribir (300 ms). La diferencia se
-  comprueba en la consola: `[MovieSearch] keystroke -> "…"` se registra en cada
-  tecla, mientras que `[Filter] applied with "…"` aparece una sola vez, con el
-  retardo.
+- **Hook:** `src/hooks/useDebounce.js`, usado en `App`.
+- **Por qué:** separa el texto que se pinta en el input del texto que filtra. Cada
+  pulsación solo repinta el input; el filtro se aplica 300 ms después de la última
+  tecla.
+- **API:** devuelve `debouncedValue`, `isPending`, `flush` y `reset`.
+  - `flush(query)` aplica el texto de inmediato (CTA **Buscar**).
+  - `reset('')` vacía el valor pendiente y el aplicado (botón **Limpiar filtro**).
+- **Comprobación en consola:** `[useDebounce] keystroke -> "…"` se registra en cada
+  tecla; `[useDebounce] applied -> "…"` aparece una sola vez, con el retardo.
 
-## 4. Temporizador del retardo — `timerRef`
+## 4. Tamaño de ventana — `useWindowSize`
 
-- **Componente:** `App` (`src/App.jsx`), con `useRef`.
-- **Por qué ahí y no en `useState`:** es solo una referencia al id del
-  `setTimeout`. Una ref **persiste entre renderizados sin provocar repintados**, lo
-  cual es justo lo que se necesita para poder cancelarlo.
-- **Para qué:**
-  - En la limpieza del `useEffect` (`clearTimeout`) evita que un temporizador
-    huérfano escriba un estado viejo tras desmontar o cambiar de texto.
-  - Permite que las acciones inmediatas lo cancelen: **`applySearchNow`** (CTA
-    *Buscar* del banner) y **`clearQuery`** (botón *Limpiar búsqueda*) aplican el
-    resultado al instante sin esperar el retardo.
+- **Hook:** `src/hooks/useWindowSize.js`.
+- **Se usa en:** `MovieList` y `PremieresCarousel`.
+- **Por qué:** decide cuántas tarjetas se muestran por fila (1, 2, 3 o 4) y cuántos
+  estrenos se ven por vista (1, 2 o 3). Los breakpoints están en `utils/layout.js`.
+- **Detalle:** se suscribe a `resize` y `orientationchange` y limpia los listeners al
+  desmontar.
+
+## 5. Estrenos — `usePremieres`
+
+- **Hook:** `src/hooks/usePremieres.js`.
+- **Se usa en:** `PremieresSection`.
+- **Estados:** `loading`, `success` y `error`.
+- **Cómo funciona:** simula una petición con `setTimeout` de 2.2 s, cancela el
+  temporizador al desmontar y devuelve `status`, `items`, `error` y `retry`.
+- **Demostración:** el botón **Simular error** cambia `shouldFail`; **Reintentar**
+  incrementa el intento; **Ver datos de ejemplo** desactiva el error simulado.
+
+## 6. Avisos emergentes — `ToastProvider` y `useToast`
+
+- **Componentes:** `ToastProvider` mantiene la lista de avisos y `Toast` los pinta.
+- **Hook:** `useToast` expone `showToast` y `removeToast`.
+- **Por qué así:** `MovieCard` no conoce el toast. Solo llama a `onToggleFavorite`; es
+  `App` quien decide el mensaje y `ToastProvider` quien lo muestra. Así la tarjeta no
+  sabe cómo se presenta el aviso.
+- **Accesibilidad:** el contenedor usa `aria-live="polite"` y cada aviso `role="status"`.
+
+## 7. Error simulado de estrenos — `simulateError`
+
+- **Componente:** `PremieresSection`, con `useState`.
+- **Por qué ahí:** es un control de demostración local; ningún otro componente lo
+  necesita. No contamina el estado global de la aplicación.
 
 ---
 
 ## Cuadro resumen
 
-| Dato | Componente que lo guarda | Mecanismo | Por qué ahí |
-| ---- | ------------------------ | --------- | ----------- |
-| `favorites` (favoritas) | `App` | `useState` | Ancestro común de `MovieList` y `MovieCard`; se pinta y se recorre desde ahí. |
-| `query` (texto del input) | `App` | `useState` | Ancestro común de `Hero` (escribe) y `MovieList` (filtra). |
-| `debouncedQuery` (a filtrar) | `App` | `useState` + `useEffect` | Derivado de `query` con retardo; es el valor que usa el filtro. |
-| `timerRef` (id del timer) | `App` | `useRef` | Persiste sin repintar; permite cancelar el retardo (Buscar / Limpiar). |
-| Favoritas persistidas | `localStorage` | `useEffect` + initializer | Sobreviven a la recarga de la página (paso 10), con la clave `cinemax:favorites`. |
+| Dato | Dónde vive | Mecanismo | Por qué |
+| ---- | ---------- | --------- | ------- |
+| `favorites` | `App` | `useState` + `useEffect` | Ancestro común; se pinta, se recorre y se cuenta desde ahí. |
+| `query` | `App` | `useState` | `Hero` escribe y `MovieList` lee. |
+| `debouncedValue` | `useDebounce` (en `App`) | `useState` + `useEffect` + refs | Evita filtrar en cada pulsación y permite aplicar/limpiar al instante. |
+| `favoriteCount` | Derivado en `App` | `favorites.length` | La cabecera solo necesita el número, no la lista. |
+| `windowSize` | `useWindowSize` | `useState` + listeners | Columnas y elementos por vista responsive. |
+| `premieres` y su estado | `usePremieres` | `useState` + `useEffect` | Simula la petición y muestra carga, datos o error. |
+| `toasts` | `ToastProvider` | `useState` + `useRef` | Avisos transversales sin acoplar las tarjetas. |
+| `simulateError` | `PremieresSection` | `useState` | Control local para demostrar el estado de error. |
 
 ---
 
-## Captura del estado vacío del buscador (paso 8)
+## Árbol de componentes
 
-Cuando ninguna película coincide con el texto, `MovieList` dibuja el estado vacío
-con un mensaje y el botón **Limpiar búsqueda** (variant `secondary` del componente
-`Button`), en lugar de una lista vacía.
-
-**Captura:** [`evidencias/08-estado-vacio-buscador.png`](./evidencias/08-estado-vacio-buscador.png)
-
-Texto mostrado en la captura (búsqueda `zzz`):
-
+```text
+ToastProvider [toasts]
+└── App [favorites, query, debouncedQuery]
+    ├── Header [favoriteCount]
+    ├── Hero [featuredMovie, query, onQueryChange, onSearch, onClearQuery]
+    │   ├── MovieSearch [value, onChange]
+    │   └── Button
+    ├── PremieresSection [simulateError; usePremieres]
+    │   ├── Skeleton
+    │   └── PremieresCarousel [premieres, itemsPerView]
+    │       └── PremiereCard [premiere]
+    ├── MovieList [movies, query, favorites, columns]
+    │   └── MovieCard [movie, isFavorite, onToggleFavorite]
+    └── Footer
 ```
-No hay películas que coincidan con “zzz”.
 
-[ Limpiar búsqueda ]
-```
+## Por qué el contador de favoritas no vive en la cabecera
 
-Verificación reproducible en la consola del navegador:
-
-```js
-// Write a text with no matches and check the empty state
-document.querySelector('.movie-search__input').value // -> "zzz"
-document.querySelector('.movie-list__empty').innerText
-// -> 'No hay películas que coincidan con “zzz”.\n\nLimpiar búsqueda'
-document.querySelectorAll('.movie-card').length // -> 0
-```
+`Header` es hermano de `MovieList` y de `MovieCard`, no su ancestro. Si guardara el
+contador habría dos fuentes de verdad (la lista de favoritas y el número de la
+cabecera) que podrían desincronizarse. Además, la cabecera tendría que recibir la
+lista completa o una cadena de callbacks que no le corresponde. La solución es elevar
+`favorites` a `App` y pasarle a `Header` solo `favorites.length`.

@@ -4,6 +4,7 @@
 @import './base/typography.css';
 @import './base/forms.css';
 @import './layout/layout.css';
+@import './layout/sections.css';
 @import './components/button.css';
 @import './components/header.css';
 @import './components/footer.css';
@@ -11,5 +12,10 @@
 @import './components/movie-search.css';
 @import './components/movie-list.css';
 @import './components/movie-card.css';
+@import './components/skeleton.css';
+@import './components/premieres.css';
+@import './components/premiere-card.css';
+@import './components/premieres-carousel.css';
+@import './components/toast.css';
 /* Last: wins ties against component classes with the same specificity. */
 @import './base/utilities.css';

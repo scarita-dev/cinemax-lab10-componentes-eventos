@@ -14,5 +14,32 @@
 .main {
   flex: 1;
   padding-top: var(--space-4);
-  padding-bottom: var(--space-4);
+  padding-bottom: var(--space-5);
+}
+
+/* Generic section heading shared by premieres and cartelera. */
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.section-title {
+  margin: 0;
+  font-size: 1.65rem;
+}
+
+.section-subtitle {
+  margin: var(--space-1) 0 0;
+  color: var(--color-muted);
+}
+
+.section-count {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
 }

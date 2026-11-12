@@ -1,0 +1,115 @@
+﻿cinemax-lab10-componentes-eventos-main/
+├── evidencias/
+│   ├── 01-pantalla-completa.jpg
+│   ├── 02-hero.png
+│   ├── 03-moviecards.png
+│   ├── 04-consola-sin-errores.png
+│   ├── 04-consola-sin-errores-lab09.png
+│   ├── 05-commits.png
+│   ├── 06-estado-vacio-buscador.png
+│   ├── 07-pantalla-completa.png
+│   ├── 08-estado-vacio-buscador.png
+│   ├── 09-busqueda-orion.png
+│   ├── 10-favorita.png
+│   ├── 11-toast-favorita.jpg
+│   ├── 12-estrenos-cargando.jpg
+│   ├── 13-estrenos-error.jpg
+│   ├── 14-busqueda-limpiar.jpg
+│   ├── 15-pantalla-completa.jpg
+│   ├── 16-estructura-proyecto.txt
+│   ├── 17-consola-sin-errores.txt
+│   ├── evidencia-4-consola.html
+│   ├── evidencia-5-commits.html
+│   └── LEEME.md
+├── public/
+│   ├── posters/
+│   │   ├── pelicula-1.svg
+│   │   ├── pelicula-2.svg
+│   │   ├── pelicula-3.svg
+│   │   ├── pelicula-4.svg
+│   │   ├── pelicula-5.svg
+│   │   ├── pelicula-6.svg
+│   │   ├── pelicula-7.svg
+│   │   ├── pelicula-8.svg
+│   │   └── pelicula-9.svg
+│   ├── favicon.svg
+│   └── robots.txt
+├── src/
+│   ├── components/
+│   │   ├── Button/
+│   │   │   └── Button.jsx
+│   │   ├── Footer/
+│   │   │   └── Footer.jsx
+│   │   ├── Header/
+│   │   │   └── Header.jsx
+│   │   ├── Hero/
+│   │   │   └── Hero.jsx
+│   │   ├── MovieCard/
+│   │   │   └── MovieCard.jsx
+│   │   ├── MovieList/
+│   │   │   └── MovieList.jsx
+│   │   ├── MovieSearch/
+│   │   │   └── MovieSearch.jsx
+│   │   ├── PremiereCard/
+│   │   │   └── PremiereCard.jsx
+│   │   ├── PremieresCarousel/
+│   │   │   └── PremieresCarousel.jsx
+│   │   ├── PremieresSection/
+│   │   │   └── PremieresSection.jsx
+│   │   ├── Skeleton/
+│   │   │   └── Skeleton.jsx
+│   │   ├── Toast/
+│   │   │   └── Toast.jsx
+│   │   └── ToastProvider/
+│   │       └── ToastProvider.jsx
+│   ├── context/
+│   │   └── toastContext.js
+│   ├── data/
+│   │   ├── cinema.js
+│   │   ├── movies.js
+│   │   └── premieres.js
+│   ├── hooks/
+│   │   ├── useDebounce.js
+│   │   ├── usePremieres.js
+│   │   ├── useToast.js
+│   │   └── useWindowSize.js
+│   ├── styles/
+│   │   ├── base/
+│   │   │   ├── forms.css
+│   │   │   ├── reset.css
+│   │   │   ├── typography.css
+│   │   │   ├── utilities.css
+│   │   │   └── variables.css
+│   │   ├── components/
+│   │   │   ├── button.css
+│   │   │   ├── footer.css
+│   │   │   ├── header.css
+│   │   │   ├── hero.css
+│   │   │   ├── movie-card.css
+│   │   │   ├── movie-list.css
+│   │   │   ├── movie-search.css
+│   │   │   ├── premiere-card.css
+│   │   │   ├── premieres.css
+│   │   │   ├── premieres-carousel.css
+│   │   │   ├── skeleton.css
+│   │   │   └── toast.css
+│   │   ├── layout/
+│   │   │   ├── layout.css
+│   │   │   └── sections.css
+│   │   └── main.css
+│   ├── utils/
+│   │   ├── layout.js
+│   │   └── movieAdapter.js
+│   ├── App.jsx
+│   └── main.jsx
+├── .gitignore
+├── .oxlintrc.json
+├── ENTREGABLE-S10.md
+├── ENTREGABLE-S11.md
+├── errores-react.md
+├── estado-y-persistencia.md
+├── index.html
+├── package.json
+├── package-lock.json
+├── README.md
+└── vite.config.js

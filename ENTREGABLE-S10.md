@@ -4,7 +4,7 @@
 
 | Campo | Valor |
 | ----- | ----- |
-| **Nombre** | Michael Montgomery Rosell |
+| **Nombre** | Sofia Cindell Carita Quispe |
 | **Curso** | Desarrollo de Aplicaciones Empresariales |
 | **Sección** | 4-C24-A |
 | **Laboratorio** | N.° 10 — Componentes y eventos |

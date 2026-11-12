@@ -1,0 +1,36 @@
+.premieres__demo {
+  font-size: 0.8rem;
+}
+
+.premieres__error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 107, 107, 0.5);
+  border-left: 4px solid var(--color-danger);
+  border-radius: var(--radius);
+}
+
+.premieres__error-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  background: rgba(255, 107, 107, 0.15);
+  border-radius: 50%;
+  color: var(--color-danger);
+  font-weight: 800;
+}
+
+.premieres__error-copy h3 {
+  margin: 0 0 var(--space-1);
+}
+
+.premieres__error-copy p {
+  margin: 0 0 var(--space-3);
+  color: var(--color-muted);
+}

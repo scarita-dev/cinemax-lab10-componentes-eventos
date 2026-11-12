@@ -1,6 +1,6 @@
 import cinema from '../../data/cinema'
 
-function Header() {
+function Header({ favoriteCount = 0 }) {
   return (
     <header className="header">
       <div className="header__inner container">
@@ -17,6 +17,19 @@ function Header() {
               </li>
             ))}
           </ul>
+          <span
+            className="header__favorites"
+            aria-live="polite"
+            aria-label={`${favoriteCount} ${
+              favoriteCount === 1 ? 'película favorita' : 'películas favoritas'
+            }`}
+          >
+            <span className="header__favorites-star" aria-hidden="true">
+              ★
+            </span>
+            <span className="header__favorites-label">Favoritas</span>
+            <span className="header__favorites-count">{favoriteCount}</span>
+          </span>
         </nav>
       </div>
     </header>

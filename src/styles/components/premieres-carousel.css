@@ -1,0 +1,50 @@
+.premieres-carousel {
+  position: relative;
+}
+
+.premieres-carousel__controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.premieres-carousel__button {
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.premieres-carousel__track {
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.premieres-carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.premieres-carousel__item {
+  flex: 0 0
+    calc(
+      (100% - (var(--premiere-items) - 1) * var(--space-4)) /
+        var(--premiere-items)
+    );
+  scroll-snap-align: start;
+}
+
+@media (max-width: 519px) {
+  .premieres-carousel__track {
+    gap: var(--space-3);
+  }
+
+  .premieres-carousel__item {
+    flex-basis: 100%;
+  }
+}

@@ -1,0 +1,79 @@
+.skeleton-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+.skeleton {
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.skeleton__media {
+  aspect-ratio: 16 / 10;
+  background: var(--color-surface-raised);
+}
+
+.skeleton__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+}
+
+.skeleton__line {
+  display: block;
+  height: 0.7rem;
+  background: var(--color-surface-raised);
+  border-radius: var(--radius-pill);
+}
+
+.skeleton__line--title {
+  width: 75%;
+  height: 1rem;
+}
+
+.skeleton__line--medium {
+  width: 60%;
+}
+
+.skeleton__line--short {
+  width: 35%;
+  height: 0.55rem;
+}
+
+.skeleton__media,
+.skeleton__line {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton__media::after,
+.skeleton__line::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  content: '';
+  transform: translateX(-100%);
+  animation: skeleton-shimmer 1.4s infinite;
+}
+
+@keyframes skeleton-shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton__media::after,
+  .skeleton__line::after {
+    animation: none;
+  }
+}
