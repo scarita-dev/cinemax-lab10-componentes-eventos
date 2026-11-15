@@ -1,0 +1,85 @@
+﻿diff --git a/src/ai/useAgentRun.js b/src/ai/useAgentRun.js
+index 5be70ae..0b82391 100644
+--- a/src/ai/useAgentRun.js
++++ b/src/ai/useAgentRun.js
+@@ -1,24 +1,32 @@
+-import { useCallback, useRef, useState } from "react";
++import { useCallback, useEffect, useRef, useState } from "react";
+ 
+ const IDLE = { status: "idle", plan: null, result: null, error: null };
+ 
+ export default function useAgentRun(runAgent) {
+   const [run, setRun] = useState(IDLE);
+-
+-  if (!runAgent) {
+-    return { ...IDLE, start: () => {}, approve: () => {}, reject: () => {} };
+-  }
+-
+   const latest = useRef(IDLE);
+   const controller = useRef(null);
+ 
+-  const update = (next) => {
++  // Fixed fault 4: the early return for a missing runAgent happened BEFORE useRef/useCallback, so the
++  // number of hooks changed between renders and React threw "Rendered more hooks than during the
++  // previous render" when runAgent appeared. Now every hook runs on every render and start() checks.
++  const update = useCallback((next) => {
+     latest.current = next;
+     setRun(next);
+-  };
++  }, []);
++
++  // Fixed fault 5: with no cleanup effect, an unmount left the run going and its late response could
++  // still update a component that no longer existed. This cleanup aborts the run in flight.
++  useEffect(() => {
++    return () => {
++      controller.current?.abort();
++    };
++  }, []);
+ 
+   const start = useCallback(
+     (plan) => {
++      if (!runAgent) return;
++
+       const { status } = latest.current;
+       if (status === "running" || status === "awaiting_approval") return;
+ 
+@@ -29,7 +37,14 @@ export default function useAgentRun(runAgent) {
+       runAgent(plan, { signal: current.signal }).then(
+         (result) => {
+           if (current.signal.aborted) return;
+-          update({ status: "done", plan, result, error: null });
++          // Fixed fault 6: every successful run went straight to "done", so a destructive R2 plan was
++          // applied without a human confirmation. R2 now stops in "awaiting_approval" until approve().
++          update({
++            status: plan.risk === "R2" ? "awaiting_approval" : "done",
++            plan,
++            result,
++            error: null,
++          });
+         },
+         (error) => {
+           if (current.signal.aborted) return;
+@@ -37,20 +52,20 @@ export default function useAgentRun(runAgent) {
+         }
+       );
+     },
+-    [runAgent]
++    [runAgent, update]
+   );
+ 
+   const approve = useCallback(() => {
+     if (latest.current.status !== "awaiting_approval") return;
+     update({ ...latest.current, status: "done" });
+-  }, []);
++  }, [update]);
+ 
+   const reject = useCallback(() => {
+     const { status } = latest.current;
+     if (status !== "running" && status !== "awaiting_approval") return;
+     controller.current?.abort();
+     update(IDLE);
+-  }, []);
++  }, [update]);
+ 
+   return { ...run, start, approve, reject };
+ }

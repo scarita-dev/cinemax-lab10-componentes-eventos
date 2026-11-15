@@ -1,0 +1,14 @@
+﻿
+> dae-s11-hooks-del-agente@0.1.0 build
+> vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+Ô£ô 44 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.41 kB Ôöé gzip:  0.27 kB
+dist/assets/index-nqTO6Kej.css    4.93 kB Ôöé gzip:  1.54 kB
+dist/assets/index-DNWdvRro.js   233.03 kB Ôöé gzip: 72.96 kB
+Ô£ô built in 2.59s
+

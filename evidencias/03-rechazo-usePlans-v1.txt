@@ -1,0 +1,226 @@
+﻿
+> dae-s11-hooks-del-agente@0.1.0 test
+> vitest run --mode team usePlans
+
+
+ RUN  v3.2.7 C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main
+
+ ÔØ» src/test/usePlans.test.jsx (12 tests | 4 failed) 296ms
+   Ô£ô usePlans ┬À los tres estados > empieza en loading, sin planes ni error, y pide los planes al montar 84ms
+   Ô£ô usePlans ┬À los tres estados > al llegar los planes pasa a ready con los planes y sin error 11ms
+   Ô£ô usePlans ┬À los tres estados > si la petici├│n falla pasa a error, con el error y sin planes 11ms
+   Ô£ô usePlans ┬À los tres estados > no pide los planes otra vez en cada dibujado 6ms
+   Ô£ô usePlans ┬À reload > reload() vuelve a loading, pide otra vez y termina en ready con los planes nuevos 5ms
+   Ô£ô usePlans ┬À reload > despu├®s de un error, reload() limpia el error y puede terminar bien 3ms
+   Ô£ô usePlans ┬À reload > reload mantiene la misma identidad entre dibujados 4ms
+   ├ù usePlans ┬À ignora la respuesta vieja (carrera de peticiones) > si la primera respuesta llega DESPU├ëS de la segunda, no pisa a la nueva 136ms
+     ÔåÆ expected [ { id: 'T-01', ÔÇª(5) }, ÔÇª(1) ] to deeply equal [ { id: 'T-03', ÔÇª(5) }, ÔÇª(1) ]
+   ├ù usePlans ┬À ignora la respuesta vieja (carrera de peticiones) > si la primera FALLA tarde, el error viejo no pisa los planes nuevos 15ms
+     ÔåÆ expected 'error' to be 'ready' // Object.is equality
+   ├ù usePlans ┬À ignora la respuesta vieja (carrera de peticiones) > si cambia la funci├│n fetchPlans, la respuesta de la anterior se ignora 6ms
+     ÔåÆ expected [ { id: 'T-01', ÔÇª(5) }, ÔÇª(1) ] to deeply equal [ { id: 'T-03', ÔÇª(5) }, ÔÇª(1) ]
+   ├ù usePlans ┬À ignora la respuesta vieja (carrera de peticiones) > con StrictMode (como en desarrollo) el efecto corre dos veces y gana la respuesta de la segunda 6ms
+     ÔåÆ expected [ { id: 'T-01', ÔÇª(5) }, ÔÇª(1) ] to deeply equal [ { id: 'T-03', ÔÇª(5) }, ÔÇª(1) ]
+   Ô£ô usePlans ┬À desmontar > si la respuesta llega despu├®s de desmontar, no pasa nada 3ms
+node.exe : 
+En línea: 1 Carácter: 1
++ & "C:\Users\DANITZA\AppData\Local\Temp\opencode\node\node-v22.23.5-wi ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ» Failed Tests 4 ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+
+ FAIL  src/test/usePlans.test.jsx > usePlans ┬À ignora la respuesta vieja (carrera de 
+peticiones) > si la primera respuesta llega DESPU├ëS de la segunda, no pisa a la nueva
+AssertionError: expected [ { id: 'T-01', ÔÇª(5) }, ÔÇª(1) ] to deeply equal [ { id: 'T-03', ÔÇª(5) }, 
+ÔÇª(1) ]
+
+- Expected
++ Received
+
+  [
+    {
+-     "id": "T-03",
+-     "op": "questions_destroy",
+-     "plan_hash": "112233445566",
++     "id": "T-01",
++     "op": "exams_destroy",
++     "plan_hash": "a1b2c3d4e5f6",
+      "proposed_by": "agente",
+      "risk": "R2",
+      "target": {
+-       "id": 7,
+-       "text": "┬┐Qu├® es el contexto de una plantilla?",
++       "id": 1,
++       "question_count": 4,
++       "title": "Examen de ORM",
+      },
+    },
+    {
+-     "id": "T-04",
++     "id": "T-02",
+      "op": "questions_create",
+-     "plan_hash": "99aabbccddee",
++     "plan_hash": "0f9e8d7c6b5a",
+      "proposed_by": "agente",
+      "risk": "R1",
+      "target": {
+-       "exam": 2,
+-       "text": "┬┐Para qu├® sirve csrf_token?",
++       "exam": 1,
++       "text": "┬┐Qu├® hace values_list()?",
+      },
+    },
+  ]
+
+ ÔØ» src/test/usePlans.test.jsx:132:34
+    130|     await resolveWith(first, plansA); // llega 
+tarde
+    131|     
+expect(result.current.status).toBe("ready");
+    132|     
+expect(result.current.plans).toEqual(plansB);
+       |                                  ^
+    133|   });
+    134| 
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[1/4]ÔÄ»
+
+ FAIL  src/test/usePlans.test.jsx > usePlans ┬À ignora la respuesta vieja (carrera de 
+peticiones) > si la primera FALLA tarde, el error viejo no pisa los planes nuevos
+AssertionError: expected 'error' to be 'ready' // Object.is equality
+
+Expected: "ready"
+Received: "error"
+
+ ÔØ» src/test/usePlans.test.jsx:145:35
+    143|     await rejectWith(first, new Error("Tarde 
+y roto"));
+    144| 
+    145|     
+expect(result.current.status).toBe("ready");
+       |                                   ^
+    146|     
+expect(result.current.plans).toEqual(plansB);
+    147|     
+expect(result.current.error).toBeNull();
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[2/4]ÔÄ»
+
+ FAIL  src/test/usePlans.test.jsx > usePlans ┬À ignora la respuesta vieja (carrera de 
+peticiones) > si cambia la funci├│n fetchPlans, la respuesta de la anterior se ignora
+AssertionError: expected [ { id: 'T-01', ÔÇª(5) }, ÔÇª(1) ] to deeply equal [ { id: 'T-03', ÔÇª(5) }, 
+ÔÇª(1) ]
+
+- Expected
++ Received
+
+  [
+    {
+-     "id": "T-03",
+-     "op": "questions_destroy",
+-     "plan_hash": "112233445566",
++     "id": "T-01",
++     "op": "exams_destroy",
++     "plan_hash": "a1b2c3d4e5f6",
+      "proposed_by": "agente",
+      "risk": "R2",
+      "target": {
+-       "id": 7,
+-       "text": "┬┐Qu├® es el contexto de una plantilla?",
++       "id": 1,
++       "question_count": 4,
++       "title": "Examen de ORM",
+      },
+    },
+    {
+-     "id": "T-04",
++     "id": "T-02",
+      "op": "questions_create",
+-     "plan_hash": "99aabbccddee",
++     "plan_hash": "0f9e8d7c6b5a",
+      "proposed_by": "agente",
+      "risk": "R1",
+      "target": {
+-       "exam": 2,
+-       "text": "┬┐Para qu├® sirve csrf_token?",
++       "exam": 1,
++       "text": "┬┐Qu├® hace values_list()?",
+      },
+    },
+  ]
+
+ ÔØ» src/test/usePlans.test.jsx:164:34
+    162|     await resolveWith(old, plansA);
+    163| 
+    164|     
+expect(result.current.plans).toEqual(plansB);
+       |                                  ^
+    165|   });
+    166| 
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[3/4]ÔÄ»
+
+ FAIL  src/test/usePlans.test.jsx > usePlans ┬À ignora la respuesta vieja (carrera de 
+peticiones) > con StrictMode (como en desarrollo) el efecto corre dos veces y gana la respuesta de la segunda
+AssertionError: expected [ { id: 'T-01', ÔÇª(5) }, ÔÇª(1) ] to deeply equal [ { id: 'T-03', ÔÇª(5) }, 
+ÔÇª(1) ]
+
+- Expected
++ Received
+
+  [
+    {
+-     "id": "T-03",
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 8 passed (12)
+   Start at  11:14:56
+   Duration  4.84s (transform 1.14s, setup 567ms, collect 1.38s, tests 296ms, environment 1.48s, prepare 260ms)
+
+-     "op": "questions_destroy",
+-     "plan_hash": "112233445566",
++     "id": "T-01",
++     "op": "exams_destroy",
++     "plan_hash": "a1b2c3d4e5f6",
+      "proposed_by": "agente",
+      "risk": "R2",
+      "target": {
+-       "id": 7,
+-       "text": "┬┐Qu├® es el contexto de una plantilla?",
++       "id": 1,
++       "question_count": 4,
++       "title": "Examen de ORM",
+      },
+    },
+    {
+-     "id": "T-04",
++     "id": "T-02",
+      "op": "questions_create",
+-     "plan_hash": "99aabbccddee",
++     "plan_hash": "0f9e8d7c6b5a",
+      "proposed_by": "agente",
+      "risk": "R1",
+      "target": {
+-       "exam": 2,
+-       "text": "┬┐Para qu├® sirve csrf_token?",
++       "exam": 1,
++       "text": "┬┐Qu├® hace values_list()?",
+      },
+    },
+  ]
+
+ ÔØ» src/test/usePlans.test.jsx:178:34
+    176| 
+    177|     
+expect(result.current.status).toBe("ready");
+    178|     
+expect(result.current.plans).toEqual(plansB);
+       |                                  ^
+    179|   });
+    180| });
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[4/4]ÔÄ»
+
+

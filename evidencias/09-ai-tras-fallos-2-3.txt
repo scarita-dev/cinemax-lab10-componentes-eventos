@@ -1,0 +1,660 @@
+﻿
+> dae-s11-hooks-del-agente@0.1.0 test:ai
+> vitest run --mode ai
+
+
+ RUN  v3.2.7 C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main
+
+ Ô£ô src/test/useDebounce.test.jsx (10 tests) 114ms
+ Ô£ô src/test/usePlans.test.jsx (12 tests) 128ms
+ ÔØ» src/test/useAgentRun.test.jsx (18 tests | 7 failed) 215ms
+   Ô£ô useAgentRun ┬À punto de partida > empieza en idle, sin plan, resultado ni error, y expone start, approve y reject 47ms
+   Ô£ô useAgentRun ┬À punto de partida > approve() y reject() en idle no hacen nada 7ms
+   Ô£ô useAgentRun ┬À un plan R1 > start(plan) pasa a running y llama a runAgent con el plan y una se├▒al sin abortar 10ms
+   Ô£ô useAgentRun ┬À un plan R1 > al terminar bien va directo a done con el resultado, sin pedir aprobaci├│n 11ms
+   ├ù useAgentRun ┬À un plan R2 no se aplica sin aprobaci├│n > al terminar bien pasa a awaiting_approval (guarda el resultado) y NO a done 29ms
+     ÔåÆ expected 'done' to be 'awaiting_approval' // Object.is equality
+   ├ù useAgentRun ┬À un plan R2 no se aplica sin aprobaci├│n > solo approve() lo lleva a done, y pasa por todos los estados en orden 15ms
+     ÔåÆ expected [ 'idle', 'running', 'done' ] to deeply equal [ 'idle', 'running', ÔÇª(2) ]
+   ├ù useAgentRun ┬À un plan R2 no se aplica sin aprobaci├│n > approve() mientras corre no salta la barrera: al terminar sigue pidiendo aprobaci├│n 9ms
+     ÔåÆ expected 'done' to be 'awaiting_approval' // Object.is equality
+   ├ù useAgentRun ┬À un plan R2 no se aplica sin aprobaci├│n > reject() en awaiting_approval descarta el resultado y vuelve a idle 22ms
+     ÔåÆ expected { status: 'done', ÔÇª(6) } to match object { status: 'idle', plan: null, ÔÇª(2) }
+(3 matching properties omitted from actual)
+   Ô£ô useAgentRun ┬À un plan R2 no se aplica sin aprobaci├│n > approve() dos veces seguidas no vuelve a hacer nada raro 7ms
+   Ô£ô useAgentRun ┬À cancelar, fallar y reintentar > reject() mientras corre aborta la se├▒al, vuelve a idle y descarta lo que llegue despu├®s 6ms
+   Ô£ô useAgentRun ┬À cancelar, fallar y reintentar > si runAgent falla pasa a error, con el error y el plan 5ms
+   Ô£ô useAgentRun ┬À cancelar, fallar y reintentar > con una ejecuci├│n en curso, start() no lanza otra 5ms
+   ├ù useAgentRun ┬À cancelar, fallar y reintentar > esperando aprobaci├│n tampoco se puede lanzar otra ejecuci├│n 4ms
+     ÔåÆ expected "spy" to be called 1 times, but got 2 times
+   Ô£ô useAgentRun ┬À cancelar, fallar y reintentar > despu├®s de un error se puede volver a empezar con otro plan 4ms
+   ├ù useAgentRun ┬À limpieza al desmontar > al desmontar con una ejecuci├│n en curso aborta su se├▒al 6ms
+     ÔåÆ expected false to be true // Object.is equality
+   Ô£ô useAgentRun ┬À limpieza al desmontar > si la respuesta llega despu├®s de desmontar, no pasa nada 4ms
+   Ô£ô useAgentRun ┬À las reglas de los hooks > sin runAgent se queda en idle y start() no hace nada 2ms
+   ├ù useAgentRun ┬À las reglas de los hooks > si runAgent aparece en un dibujado posterior, el hook no se rompe y funciona 17ms
+     ÔåÆ expected [Function] to not throw an error but 'Error: Rendered more hooks than durinÔÇª' was thrown
+ Ô£ô src/test/App.test.jsx (7 tests) 872ms
+ ÔØ» src/test/Inbox.test.jsx (10 tests | 2 failed) 1472ms
+   Ô£ô Inbox ┬À decidir (las decisiones llegan por props) > separa pendientes y decididos seg├║n decisions 260ms
+   Ô£ô Inbox ┬À decidir (las decisiones llegan por props) > aprobar un plan R1 avisa al padre con onDecide(id, 'approved') 98ms
+   Ô£ô Inbox ┬À decidir (las decisiones llegan por props) > aprobar un plan R2 exige el hash exacto  344ms
+   Ô£ô Inbox ┬À el buscador usa useDebounce > el campo muestra lo escrito al instante, pero la lista espera 300 ms 118ms
+   Ô£ô Inbox ┬À el buscador usa useDebounce > sin coincidencias muestra el estado vac├¡o y Limpiar b├║squeda devuelve la lista 96ms
+   Ô£ô Inbox ┬À ejecuci├│n del agente con useAgentRun > sin planes aprobados no hay nada que ejecutar 34ms
+   Ô£ô Inbox ┬À ejecuci├│n del agente con useAgentRun > un plan R1 aprobado se ejecuta y termina aplicado, sin confirmaci├│n extra 132ms
+   ├ù Inbox ┬À ejecuci├│n del agente con useAgentRun > un plan R2 aprobado espera una ├║ltima confirmaci├│n antes de aplicarse 137ms
+     ÔåÆ Unable to find an element with the text: /Falta tu confirmaci├│n/. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<section
+  aria-labelledby="run-title"
+>
+  <h3
+    id="run-title"
+  >
+    Ejecuci├│n del agente
+  </h3>
+  <ul
+    class="run-list"
+  >
+    <li>
+      <span>
+        <code>
+          T-01
+        </code>
+         ┬À 
+        exams_destroy
+         ┬À 
+        Examen de ORM
+      </span>
+      <button
+        aria-label="Ejecutar T-01"
+        class="btn btn-ghost"
+        type="button"
+      >
+        Ejecutar
+      </button>
+    </li>
+    <li>
+      <span>
+        <code>
+          T-02
+        </code>
+         ┬À 
+        questions_create
+         ┬À 
+        ┬┐Qu├® hace values_list()?
+      </span>
+      <button
+        aria-label="Ejecutar T-02"
+        class="btn btn-ghost"
+        type="button"
+      >
+        Ejecutar
+      </button>
+    </li>
+  </ul>
+  <div
+    aria-label="Estado de la ejecuci├│n"
+    class="run-status run-done"
+    role="status"
+  >
+    <p>
+      T-01
+       aplicado (
+      ensayo
+      ).
+    </p>
+  </div>
+</section>
+   ├ù Inbox ┬À ejecuci├│n del agente con useAgentRun > Descartar vuelve al reposo sin aplicar nada 158ms
+     ÔåÆ Unable to find an accessible element with the role "button" and name "Descartar"
+
+Here are the accessible roles:
+
+  heading:
+
+  Name "Ejecuci├│n del agente":
+  <h3
+    id="run-title"
+  />
+
+  --------------------------------------------------list:
+
+  Name "":
+  <ul
+    class="run-list"
+  />
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  --------------------------------------------------
+  code:
+
+  Name "":
+  <code />
+
+  Name "":
+  <code />
+
+  --------------------------------------------------
+  button:
+
+  Name "Ejecutar T-01":
+  <button
+    aria-label="Ejecutar T-01"
+    class="btn btn-ghost"
+    type="button"
+  />
+
+  Name "Ejecutar T-02":
+  <button
+    aria-label="Ejecutar T-02"
+    class="btn btn-ghost"
+    type="button"
+  />
+
+  --------------------------------------------------status:
+
+  Name "Estado de la ejecuci├│n":
+  <div
+    aria-label="Estado de la ejecuci├│n"
+    class="run-status run-done"
+    role="status"
+  />
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<section
+  aria-labelledby="run-title"
+>
+  <h3
+    id="run-title"
+  >
+    Ejecuci├│n del agente
+  </h3>
+  <ul
+    class="run-list"
+  >
+    <li>
+      <span>
+        <code>
+          T-01
+        </code>
+         ┬À 
+        exams_destroy
+         ┬À 
+        Examen de ORM
+      </span>
+      <button
+        aria-label="Ejecutar T-01"
+        class="btn btn-ghost"
+        type="button"
+      >
+        Ejecutar
+      </button>
+    </li>
+    <li>
+      <span>
+        <code>
+          T-02
+        </code>
+         ┬À 
+        questions_create
+         ┬À 
+        ┬┐Qu├® hace values_list()?
+      </span>
+      <button
+        aria-label="Ejecutar T-02"
+        class="btn btn-ghost"
+        type="button"
+      >
+        Ejecutar
+      </button>
+    </li>
+  </ul>
+  <div
+    aria-label="Estado de la ejecuci├│n"
+    class="run-status run-done"
+    role="status"
+  >
+    <p>
+      T-01
+       aplicado (
+      ensayo
+      ).
+    </p>
+  </div>
+</section>
+   Ô£ô Inbox ┬À ejecuci├│n del agente con useAgentRun > si el agente falla, lo dice 90ms
+node.exe : 
+En línea: 1 Carácter: 1
++ & "C:\Users\DANITZA\AppData\Local\Temp\opencode\node\node-v22.23.5-wi ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ» Failed Tests 9 ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+
+ FAIL  src/test/Inbox.test.jsx > Inbox ┬À ejecuci├│n del agente con useAgentRun > 
+un plan R2 aprobado espera una ├║ltima confirmaci├│n antes de aplicarse
+TestingLibraryElementError: Unable to find an element with the text: /Falta tu confirmaci├│n/. This 
+could be because the text is broken up by multiple elements. In this case, you can provide a function for your text 
+matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<section
+  aria-labelledby="run-title"
+>
+  <h3
+    id="run-title"
+  >
+    Ejecuci├│n del agente
+  </h3>
+  <ul
+    class="run-list"
+  >
+    <li>
+      <span>
+        <code>
+          T-01
+        </code>
+         ┬À 
+        exams_destroy
+         ┬À 
+        Examen de ORM
+      </span>
+      <button
+        aria-label="Ejecutar T-01"
+        class="btn btn-ghost"
+        type="button"
+      >
+        Ejecutar
+      </button>
+    </li>
+    <li>
+      <span>
+        <code>
+          T-02
+        </code>
+         ┬À 
+        questions_create
+         ┬À 
+        ┬┐Qu├® hace values_list()?
+      </span>
+      <button
+        aria-label="Ejecutar T-02"
+        class="btn btn-ghost"
+        type="button"
+      >
+        Ejecutar
+      </button>
+    </li>
+  </ul>
+  <div
+    aria-label="Estado de la ejecuci├│n"
+    class="run-status run-done"
+    role="status"
+  >
+    <p>
+      T-01
+       aplicado (
+      ensayo
+      ).
+    </p>
+  </div>
+</section>
+ ÔØ» Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ÔØ» node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ÔØ» node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ÔØ» node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ÔØ» src/test/Inbox.test.jsx:115:32
+    113|     await act(async () => 
+request.resolve({ summary: "ensayo" }));
+    114| 
+    115|     expect(within(runRegion()).getByText(/Falta tu confirmaci├│n/)).toBÔÇª
+       |                                ^
+    116|     expect(within(runRegion()).queryByText(/T-01 aplicado/)).not.toBeIÔÇª
+    117| 
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[1/9]ÔÄ»
+
+ FAIL  src/test/Inbox.test.jsx > Inbox ┬À ejecuci├│n del agente con useAgentRun > 
+Descartar vuelve al reposo sin aplicar nada
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name 
+"Descartar"
+
+Here are the accessible roles:
+
+  heading:
+
+  Name "Ejecuci├│n del agente":
+  <h3
+    id="run-title"
+  />
+
+  --------------------------------------------------list:
+
+  Name "":
+  <ul
+    class="run-list"
+  />
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  --------------------------------------------------
+  code:
+
+  Name "":
+  <code />
+
+  Name "":
+  <code />
+
+  --------------------------------------------------
+  button:
+
+  Name "Ejecutar T-01":
+  <button
+    aria-label="Ejecutar T-01"
+    class="btn btn-ghost"
+    type="button"
+  />
+
+  Name "Ejecutar T-02":
+  <button
+    aria-label="Ejecutar T-02"
+    class="btn btn-ghost"
+    type="button"
+  />
+
+  --------------------------------------------------status:
+
+  Name "Estado de la ejecuci├│n":
+  <div
+    aria-label="Estado de la ejecuci├│n"
+    class="run-status run-done"
+    role="status"
+  />
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<section
+  aria-labelledby="run-title"
+>
+  <h3
+    id="run-title"
+  >
+    Ejecuci├│n del agente
+  </h3>
+  <ul
+    class="run-list"
+  >
+    <li>
+      <span>
+        <code>
+          T-01
+        </code>
+         ┬À 
+        exams_destroy
+         ┬À 
+        Examen de ORM
+      </span>
+      <button
+        aria-label="Ejecutar T-01"
+        class="btn btn-ghost"
+        type="button"
+      >
+        Ejecutar
+      </button>
+    </li>
+    <li>
+      <span>
+        <code>
+          T-02
+        </code>
+         ┬À 
+        questions_create
+         ┬À 
+        ┬┐Qu├® hace values_list()?
+      </span>
+      <button
+        aria-label="Ejecutar T-02"
+        class="btn btn-ghost"
+        type="button"
+      >
+        Ejecutar
+      </button>
+    </li>
+  </ul>
+  <div
+    aria-label="Estado de la ejecuci├│n"
+    class="run-status run-done"
+    role="status"
+  >
+    <p>
+      T-01
+       aplicado (
+      ensayo
+      ).
+    </p>
+  </div>
+</section>
+ ÔØ» Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ÔØ» node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ÔØ» node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ÔØ» node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ÔØ» src/test/Inbox.test.jsx:129:42
+    127|     await user.click(within(runRegion()).getByRole("button", { name: "ÔÇª
+    128|     await act(async () => 
+request.resolve({ summary: "ensayo" }));
+    129|     await user.click(within(runRegion()).getByRole("button", { name: "ÔÇª
+       |                                          ^
+    130| 
+    131|     expect(within(runRegion()).getByText("Sin ejecuci├│n en curso.")).tÔÇª
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[2/9]ÔÄ»
+
+ FAIL  src/test/useAgentRun.test.jsx > useAgentRun ┬À un plan R2 no se aplica sin 
+aprobaci├│n > al terminar bien pasa a awaiting_approval (guarda el resultado) y NO a done
+AssertionError: expected 'done' to be 'awaiting_approval' // Object.is equality
+
+Expected: "awaiting_approval"
+Received: "done"
+
+ ÔØ» src/test/useAgentRun.test.jsx:93:35
+     91|     await finish(requests[0], { summary: 
+"ensayo" });
+     92| 
+     93|     expect(result.current.status).toBe("await
+ing_approval");
+       |                                   ^
+     94|     expect(result.current.result).toEqual({ 
+summary: "ensayo" });
+     95|     
+expect(result.current.plan).toBe(R2);
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[3/9]ÔÄ»
+
+ FAIL  src/test/useAgentRun.test.jsx > useAgentRun ┬À un plan R2 no se aplica sin 
+aprobaci├│n > solo approve() lo lleva a done, y pasa por todos los estados en orden
+AssertionError: expected [ 'idle', 'running', 'done' ] to deeply equal [ 'idle', 'running', ÔÇª(2) ]
+
+- Expected
++ Received
+
+  [
+    "idle",
+    "running",
+-   "awaiting_approval",
+    "done",
+  ]
+
+ ÔØ» src/test/useAgentRun.test.jsx:108:18
+    106|     
+expect(result.current.status).toBe("done");
+    107|     expect(result.current.result).toEqual({ 
+summary: "ensayo" });
+    108|     expect(seen).toEqual(["idle", "running", "awaiting_approval", "donÔÇª
+       |                  ^
+    109|   });
+    110| 
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[4/9]ÔÄ»
+
+ FAIL  src/test/useAgentRun.test.jsx > useAgentRun ┬À un plan R2 no se aplica sin 
+aprobaci├│n > approve() mientras corre no salta la barrera: al terminar sigue pidiendo aprobaci├│n
+AssertionError: expected 'done' to be 'awaiting_approval' // Object.is equality
+
+Expected: "awaiting_approval"
+Received: "done"
+
+ ÔØ» src/test/useAgentRun.test.jsx:119:35
+    117| 
+    118|     await finish(requests[0], { summary: 
+"ensayo" });
+    119|     expect(result.current.status).toBe("await
+ing_approval");
+       |                                   ^
+    120|     expect(seen).not.toContain("done");
+    121|   });
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[5/9]ÔÄ»
+
+ FAIL  src/test/useAgentRun.test.jsx > useAgentRun ┬À un plan R2 no se aplica sin 
+aprobaci├│n > reject() en awaiting_approval descarta el resultado y vuelve a idle
+AssertionError: expected { status: 'done', ÔÇª(6) } to match object { status: 'idle', plan: null, ÔÇª(2) 
+}
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "error": null,
+
+ Test Files  2 failed | 3 passed (5)
+      Tests  9 failed | 48 passed (57)
+   Start at  11:17:19
+   Duration  5.21s (transform 566ms, setup 2.87s, collect 1.69s, tests 2.80s, environment 8.53s, prepare 1.35s)
+
+-   "plan": null,
+-   "result": null,
+-   "status": "idle",
++   "plan": {
++     "id": "T-01",
++     "op": "exams_destroy",
++     "plan_hash": "a1b2c3d4e5f6",
++     "proposed_by": "agente",
++     "risk": "R2",
++     "target": {
++       "id": 1,
++       "question_count": 4,
++       "title": "Examen de ORM",
++     },
++   },
++   "result": {
++     "summary": "ensayo",
++   },
++   "status": "done",
+  }
+
+ ÔØ» src/test/useAgentRun.test.jsx:130:28
+    128|     act(() => result.current.reject());
+    129| 
+    130|     expect(result.current).toMatchObject({ status: "idle", plan: null,ÔÇª
+       |                            ^
+    131|   });
+    132| 
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[6/9]ÔÄ»
+
+ FAIL  src/test/useAgentRun.test.jsx > useAgentRun ┬À cancelar, fallar y reintentar > 
+esperando aprobaci├│n tampoco se puede lanzar otra ejecuci├│n
+AssertionError: expected "spy" to be called 1 times, but got 2 times
+ ÔØ» src/test/useAgentRun.test.jsx:190:22
+    188|     await finish(requests[0], { summary: 
+"ensayo" });
+    189|     act(() => 
+result.current.start(R1));
+    190|     expect(runAgent).toHaveBeenCalledTimes(1);
+       |                      ^
+    191|     expect(result.current.status).toBe("await
+ing_approval");
+    192|   });
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[7/9]ÔÄ»
+
+ FAIL  src/test/useAgentRun.test.jsx > useAgentRun ┬À limpieza al desmontar > al 
+desmontar con una ejecuci├│n en curso aborta su se├▒al
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ÔØ» src/test/useAgentRun.test.jsx:215:28
+    213| 
+    214|     unmount();
+    215|     expect(signal.aborted).toBe(true);
+       |                            ^
+    216|   });
+    217| 
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[8/9]ÔÄ»
+
+ FAIL  src/test/useAgentRun.test.jsx > useAgentRun ┬À las reglas de los hooks > 
+si runAgent aparece en un dibujado posterior, el hook no se rompe y funciona
+AssertionError: expected [Function] to not throw an error but 'Error: Rendered more hooks than durinÔÇª' 
+was thrown
+
+- Expected: 
+undefined
+
++ Received: 
+"Error: Rendered more hooks than during the previous render."
+
+ ÔØ» src/test/useAgentRun.test.jsx:241:46
+    239| 
+    240|     const { runAgent, requests } = fakeAgent();
+    241|     expect(() => rerender({ runAgent 
+})).not.toThrow();
+       |                                              ^
+    242| 
+    243|     act(() => 
+result.current.start(R1));
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[9/9]ÔÄ»
+
+

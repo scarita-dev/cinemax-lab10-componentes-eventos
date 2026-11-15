@@ -1,0 +1,48 @@
+﻿diff --git a/src/hooks/usePlans.js (v1, rechazada) b/src/hooks/usePlans.js (v2, aceptada)
+
+--- a/src/hooks/usePlans.js (v1, rechazada)
++++ b/src/hooks/usePlans.js (v2, aceptada)
+@@ -1,6 +1,8 @@
+ import { useCallback, useEffect, useState } from "react";
+ 
+-// Attempt 1 (REJECTED): resolves the three states and reload, but does not ignore the old response.
++// Loads the agent plans and resolves the three states of a request: loading, ready and error.
++// Every effect run owns a `cancelled` flag: a response from a previous run (reload, a new
++// fetchPlans, StrictMode or unmount) is ignored instead of overwriting what is on screen.
+ export default function usePlans(fetchPlans) {
+   const [status, setStatus] = useState("loading");
+   const [plans, setPlans] = useState([]);
+@@ -8,23 +10,31 @@ export default function usePlans(fetchPlans) {
+   const [attempt, setAttempt] = useState(0);
+ 
+   useEffect(() => {
++    let cancelled = false;
++
+     setStatus("loading");
+     setPlans([]);
+     setError(null);
+ 
+     fetchPlans().then(
+       (data) => {
++        if (cancelled) return;
+         setPlans(data);
+         setStatus("ready");
+       },
+       (err) => {
++        if (cancelled) return;
+         setError(err);
+         setStatus("error");
+       }
+     );
++
++    return () => {
++      cancelled = true;
++    };
+   }, [fetchPlans, attempt]);
+ 
+   const reload = useCallback(() => setAttempt((n) => n + 1), []);
+ 
+   return { status, plans, error, reload };
+-}
+\ No newline at end of file
++}

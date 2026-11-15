@@ -1,0 +1,15 @@
+﻿
+> dae-s11-hooks-del-agente@0.1.0 test
+> vitest run --mode team usePlans
+
+
+ RUN  v3.2.7 C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main
+
+ Ô£ô src/test/usePlans.test.jsx (12 tests) 109ms
+
+ Test Files  1 passed (1)
+      Tests  12 passed (12)
+   Start at  11:15:34
+   Duration  3.55s (transform 127ms, setup 610ms, collect 209ms, tests 109ms, environment 1.69s, prepare 268ms)
+
+

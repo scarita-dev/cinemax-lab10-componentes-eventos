@@ -1,0 +1,20 @@
+﻿
+> dae-s11-hooks-del-agente@0.1.0 test
+> vitest run --mode team
+
+
+ RUN  v3.2.7 C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main
+
+ Ô£ô src/test/useDebounce.test.jsx (10 tests) 109ms
+ Ô£ô src/test/usePlans.test.jsx (12 tests) 115ms
+ Ô£ô src/test/useAgentRun.test.jsx (18 tests) 143ms
+ Ô£ô src/test/App.test.jsx (7 tests) 838ms
+ Ô£ô src/test/Inbox.test.jsx (10 tests) 1559ms
+   Ô£ô Inbox ┬À decidir (las decisiones llegan por props) > aprobar un plan R2 exige el hash exacto  361ms
+
+ Test Files  5 passed (5)
+      Tests  57 passed (57)
+   Start at  11:16:06
+   Duration  5.02s (transform 521ms, setup 2.61s, collect 1.62s, tests 2.76s, environment 7.75s, prepare 1.46s)
+
+

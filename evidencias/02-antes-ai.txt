@@ -1,0 +1,1424 @@
+﻿
+> dae-s11-hooks-del-agente@0.1.0 test:ai
+> vitest run --mode ai
+
+
+ RUN  v3.2.7 C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main
+
+node.exe : stderr | src/test/usePlans.test.jsx > usePlans ┬À los tres estados > si 
+la petici├│n falla pasa a error, con el error y sin planes
+En línea: 1 Carácter: 1
++ & "C:\Users\DANITZA\AppData\Local\Temp\opencode\node\node-v22.23.5-wi ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (stderr...or y sin planes:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Error loading plans Error: Sin conexi├│n
+    at C:\Users\DANITZA\Downloads\dae-s11-hooks-del-agente-main\src\test\usePlans.test.jsx:55:21
+    at file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/runner/
+dist/chunk-hooks.js:155:11
+    at file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/runner/
+dist/chunk-hooks.js:752:26
+    at file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/runner/
+dist/chunk-hooks.js:1897:20
+    at new Promise (<anonymous>)
+    at runWithTimeout (file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vit
+est/runner/dist/chunk-hooks.js:1863:10)
+    at runTest (file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/run
+ner/dist/chunk-hooks.js:1574:12)
+    at runSuite (file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/ru
+nner/dist/chunk-hooks.js:1729:8)
+    at runSuite (file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/ru
+nner/dist/chunk-hooks.js:1729:8)
+    at runFiles (file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/ru
+nner/dist/chunk-hooks.js:1787:3)
+
+ ÔØ» src/test/useDebounce.test.jsx (10 tests | 5 failed) 164ms
+   Ô£ô useDebounce ┬À el valor tranquilo > en el primer dibujado devuelve el valor tal cual 51ms
+   Ô£ô useDebounce ┬À el valor tranquilo > no cambia antes de que pasen delay ms y cambia justo al cumplirse 13ms
+   Ô£ô useDebounce ┬À el valor tranquilo > sirve con cualquier tipo de valor (n├║meros, objetos) 7ms
+   ├ù useDebounce ┬À cada cambio cancela el temporizador anterior > un segundo cambio reinicia la cuenta: el valor intermedio no llega a devolverse 25ms
+     ÔåÆ expected 'b' to be 'a' // Object.is equality
+   ├ù useDebounce ┬À cada cambio cancela el temporizador anterior > tres cambios seguidos devuelven solo el ├║ltimo 15ms
+     ÔåÆ expected [ 'a', 'a', 'a', 'a', 'b', 'd' ] to not include 'b'
+   ├ù useDebounce ┬À cada cambio cancela el temporizador anterior > si el valor vuelve al de antes dentro del retardo, nunca se devuelve el intermedio 5ms
+     ÔåÆ expected [ 'a', 'a', 'a', 'b', 'a' ] to not include 'b'
+   ├ù useDebounce ┬À cada cambio cancela el temporizador anterior > si cambia delay se vuelve a contar desde cero con el nuevo retardo 10ms
+     ÔåÆ expected 'b' to be 'a' // Object.is equality
+   Ô£ô useDebounce ┬À limpieza al desmontar > al desmontar justo despu├®s de montar no queda ning├║n temporizador 5ms
+   ├ù useDebounce ┬À limpieza al desmontar > al desmontar con varios cambios en el aire no queda ning├║n temporizador vivo 19ms
+     ÔåÆ expected 2 to be +0 // Object.is equality
+   Ô£ô useDebounce ┬À limpieza al desmontar > tras desmontar, dejar correr el reloj no vuelve a dibujar el hook 10ms
+stderr | src/test/usePlans.test.jsx > usePlans ┬À reload > despu├®s de un error, 
+reload() limpia el error y puede terminar bien
+Error loading plans Error: Sin conexi├│n
+    at C:\Users\DANITZA\Downloads\dae-s11-hooks-del-agente-main\src\test\usePlans.test.jsx:97:29
+    at file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/runner/
+dist/chunk-hooks.js:155:11
+    at file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/runner/
+dist/chunk-hooks.js:752:26
+    at file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/runner/
+dist/chunk-hooks.js:1897:20
+    at new Promise (<anonymous>)
+    at runWithTimeout (file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vit
+est/runner/dist/chunk-hooks.js:1863:10)
+    at runTest (file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/run
+ner/dist/chunk-hooks.js:1574:12)
+    at runSuite (file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/ru
+nner/dist/chunk-hooks.js:1729:8)
+    at runSuite (file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/ru
+nner/dist/chunk-hooks.js:1729:8)
+    at runFiles (file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/ru
+nner/dist/chunk-hooks.js:1787:3)
+
+stderr | src/test/usePlans.test.jsx > usePlans ┬À ignora la respuesta vieja (carrera de 
+peticiones) > si la primera FALLA tarde, el error viejo no pisa los planes nuevos
+Error loading plans Error: Tarde y roto
+    at C:\Users\DANITZA\Downloads\dae-s11-hooks-del-agente-main\src\test\usePlans.test.jsx:143:29
+    at file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/runner/
+dist/chunk-hooks.js:752:20
+
+ ÔØ» src/test/usePlans.test.jsx (12 tests | 5 failed) 205ms
+   Ô£ô usePlans ┬À los tres estados > empieza en loading, sin planes ni error, y pide los planes al montar 49ms
+   Ô£ô usePlans ┬À los tres estados > al llegar los planes pasa a ready con los planes y sin error 8ms
+   ├ù usePlans ┬À los tres estados > si la petici├│n falla pasa a error, con el error y sin planes 40ms
+     ÔåÆ expected 'loading' to be 'error' // Object.is equality
+   Ô£ô usePlans ┬À los tres estados > no pide los planes otra vez en cada dibujado 18ms
+   Ô£ô usePlans ┬À reload > reload() vuelve a loading, pide otra vez y termina en ready con los planes nuevos 13ms
+   ├ù usePlans ┬À reload > despu├®s de un error, reload() limpia el error y puede terminar bien 7ms
+     ÔåÆ expected 'loading' to be 'error' // Object.is equality
+   Ô£ô usePlans ┬À reload > reload mantiene la misma identidad entre dibujados 5ms
+   ├ù usePlans ┬À ignora la respuesta vieja (carrera de peticiones) > si la primera respuesta llega DESPU├ëS de la segunda, no pisa a la nueva 25ms
+     ÔåÆ expected [ { id: 'T-01', ÔÇª(5) }, ÔÇª(1) ] to deeply equal [ { id: 'T-03', ÔÇª(5) }, ÔÇª(1) ]
+   Ô£ô usePlans ┬À ignora la respuesta vieja (carrera de peticiones) > si la primera FALLA tarde, el error viejo no pisa los planes nuevos 9ms
+   ├ù usePlans ┬À ignora la respuesta vieja (carrera de peticiones) > si cambia la funci├│n fetchPlans, la respuesta de la anterior se ignora 11ms
+     ÔåÆ expected [ { id: 'T-01', ÔÇª(5) }, ÔÇª(1) ] to deeply equal [ { id: 'T-03', ÔÇª(5) }, ÔÇª(1) ]
+   ├ù usePlans ┬À ignora la respuesta vieja (carrera de peticiones) > con StrictMode (como en desarrollo) el efecto corre dos veces y gana la respuesta de la segunda 12ms
+     ÔåÆ expected [ { id: 'T-01', ÔÇª(5) }, ÔÇª(1) ] to deeply equal [ { id: 'T-03', ÔÇª(5) }, ÔÇª(1) ]
+   Ô£ô usePlans ┬À desmontar > si la respuesta llega despu├®s de desmontar, no pasa nada 5ms
+ ÔØ» src/test/useAgentRun.test.jsx (18 tests | 7 failed) 238ms
+   Ô£ô useAgentRun ┬À punto de partida > empieza en idle, sin plan, resultado ni error, y expone start, approve y reject 51ms
+   Ô£ô useAgentRun ┬À punto de partida > approve() y reject() en idle no hacen nada 6ms
+   Ô£ô useAgentRun ┬À un plan R1 > start(plan) pasa a running y llama a runAgent con el plan y una se├▒al sin abortar 9ms
+   Ô£ô useAgentRun ┬À un plan R1 > al terminar bien va directo a done con el resultado, sin pedir aprobaci├│n 7ms
+   ├ù useAgentRun ┬À un plan R2 no se aplica sin aprobaci├│n > al terminar bien pasa a awaiting_approval (guarda el resultado) y NO a done 27ms
+     ÔåÆ expected 'done' to be 'awaiting_approval' // Object.is equality
+   ├ù useAgentRun ┬À un plan R2 no se aplica sin aprobaci├│n > solo approve() lo lleva a done, y pasa por todos los estados en orden 22ms
+     ÔåÆ expected [ 'idle', 'running', 'done' ] to deeply equal [ 'idle', 'running', ÔÇª(2) ]
+   ├ù useAgentRun ┬À un plan R2 no se aplica sin aprobaci├│n > approve() mientras corre no salta la barrera: al terminar sigue pidiendo aprobaci├│n 12ms
+     ÔåÆ expected 'done' to be 'awaiting_approval' // Object.is equality
+   ├ù useAgentRun ┬À un plan R2 no se aplica sin aprobaci├│n > reject() en awaiting_approval descarta el resultado y vuelve a idle 17ms
+     ÔåÆ expected { status: 'done', ÔÇª(6) } to match object { status: 'idle', plan: null, ÔÇª(2) }
+(3 matching properties omitted from actual)
+   Ô£ô useAgentRun ┬À un plan R2 no se aplica sin aprobaci├│n > approve() dos veces seguidas no vuelve a hacer nada raro 9ms
+   Ô£ô useAgentRun ┬À cancelar, fallar y reintentar > reject() mientras corre aborta la se├▒al, vuelve a idle y descarta lo que llegue despu├®s 7ms
+   Ô£ô useAgentRun ┬À cancelar, fallar y reintentar > si runAgent falla pasa a error, con el error y el plan 6ms
+   Ô£ô useAgentRun ┬À cancelar, fallar y reintentar > con una ejecuci├│n en curso, start() no lanza otra 5ms
+   ├ù useAgentRun ┬À cancelar, fallar y reintentar > esperando aprobaci├│n tampoco se puede lanzar otra ejecuci├│n 5ms
+     ÔåÆ expected "spy" to be called 1 times, but got 2 times
+   Ô£ô useAgentRun ┬À cancelar, fallar y reintentar > despu├®s de un error se puede volver a empezar con otro plan 5ms
+   ├ù useAgentRun ┬À limpieza al desmontar > al desmontar con una ejecuci├│n en curso aborta su se├▒al 6ms
+     ÔåÆ expected false to be true // Object.is equality
+   Ô£ô useAgentRun ┬À limpieza al desmontar > si la respuesta llega despu├®s de desmontar, no pasa nada 7ms
+   Ô£ô useAgentRun ┬À las reglas de los hooks > sin runAgent se queda en idle y start() no hace nada 4ms
+   ├ù useAgentRun ┬À las reglas de los hooks > si runAgent aparece en un dibujado posterior, el hook no se rompe y funciona 25ms
+     ÔåÆ expected [Function] to not throw an error but 'Error: Rendered more hooks than durinÔÇª' was thrown
+stderr | src/test/App.test.jsx > App ┬À carga con usePlans (cargando, datos y error) > 
+si la red falla muestra el error y Reintentar vuelve a cargar
+Error loading plans Error: Sin conexi├│n con la pasarela
+    at C:\Users\DANITZA\Downloads\dae-s11-hooks-del-agente-main\src\test\App.test.jsx:53:40
+    at C:\Users\DANITZA\Downloads\dae-s11-hooks-del-agente-main\node_modules\@testing-library\react\
+dist\act-compat.js:47:24
+    at process.env.NODE_ENV.exports.act (C:\Users\DANITZA\Downloads\dae-s11-hooks-del-agente-main\node_module
+s\react\cjs\react.development.js:890:22)
+    at C:\Users\DANITZA\Downloads\dae-s11-hooks-del-agente-main\node_modules\@testing-library\react\
+dist\act-compat.js:46:25
+    at C:\Users\DANITZA\Downloads\dae-s11-hooks-del-agente-main\src\test\App.test.jsx:53:11
+    at file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/runner/
+dist/chunk-hooks.js:155:11
+    at file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/runner/
+dist/chunk-hooks.js:752:26
+    at file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vitest/runner/
+dist/chunk-hooks.js:1897:20
+    at new Promise (<anonymous>)
+    at runWithTimeout (file:///C:/Users/DANITZA/Downloads/dae-s11-hooks-del-agente-main/node_modules/@vit
+est/runner/dist/chunk-hooks.js:1863:10)
+
+ ÔØ» src/test/App.test.jsx (7 tests | 1 failed) 876ms
+   Ô£ô App ┬À prueba de humo con los datos reales > los datos tienen el formato del plan de la semana 8 9ms
+   Ô£ô App ┬À prueba de humo con los datos reales > la cabecera solo necesita un n├║mero: se dibuja sin la lista de planes 189ms
+   Ô£ô App ┬À carga con usePlans (cargando, datos y error) > muestra el esqueleto mientras carga y los planes cuando llegan 109ms
+   ├ù App ┬À carga con usePlans (cargando, datos y error) > si la red falla muestra el error y Reintentar vuelve a cargar 113ms
+     ÔåÆ Unable to find an accessible element with the role "alert"
+
+Here are the accessible roles:
+
+  main:
+
+  Name "":
+  <main
+    class="app"
+  />
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  <header
+    class="app-header"
+  />
+
+  --------------------------------------------------
+  heading:
+
+  Name "Los hooks del agente":
+  <h1 />
+
+  --------------------------------------------------
+  status:
+
+  Name "Contador de pendientes":
+  <p
+    aria-label="Contador de pendientes"
+    class="pending-counter"
+    role="status"
+  />
+
+  Name "Cargando planes":
+  <div
+    aria-label="Cargando planes"
+    class="skeleton"
+    role="status"
+  />
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p />
+
+  Name "":
+  <p
+    class="note"
+  />
+
+  --------------------------------------------------
+  checkbox:
+
+  Name "Simular fallo de red":
+  <input
+    type="checkbox"
+  />
+
+  --------------------------------------------------
+  button:
+
+  Name "Recargar planes":
+  <button
+    class="reload-link"
+    type="button"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <main
+      class="app"
+    >
+      <header
+        class="app-header"
+      >
+        <div
+          class="app-header-top"
+        >
+          <h1>
+            Los hooks del agente
+          </h1>
+          <p
+            aria-label="Contador de pendientes"
+            class="pending-counter"
+            role="status"
+          >
+            Pendientes: 
+            ÔÇª
+          </p>
+        </div>
+        <p>
+          Un agente de IA propone planes y una persona decide. Lo destructivo (R2) no se aprueba con un clic: hay que escribir el hash del plan, y ni siquiera un plan aprobado se aplica sin una ├║ltima confirmaci├│n.
+        </p>
+        <p
+          class="note"
+        >
+          Todo es local: la red es simulada (src/lib/api.js). El l├¡mite de verdad lo impone el servidor (semana 8); aqu├¡ solo ayudamos a la persona a decidir bien.
+        </p>
+      </header>
+      <div
+        class="toolbar"
+      >
+        <label
+          class="network-toggle"
+        >
+          <input
+            type="checkbox"
+          />
+          Simular fallo de red
+        </label>
+        <button
+          class="reload-link"
+          type="button"
+        >
+          Recargar planes
+        </button>
+      </div>
+      <div
+        aria-label="Cargando planes"
+        class="skeleton"
+        role="status"
+      >
+        <div
+          aria-hidden="true"
+          class="skeleton-card"
+        >
+          <span
+            class="skeleton-line skeleton-title"
+          />
+          <span
+            class="skeleton-line"
+          />
+          <span
+            class="skeleton-line skeleton-short"
+          />
+        </div>
+        <div
+          aria-hidden="true"
+          class="skeleton-card"
+        >
+          <span
+            class="skeleton-line skeleton-title"
+          />
+          <span
+            class="skeleton-line"
+          />
+          <span
+            class="skeleton-line skeleton-short"
+          />
+        </div>
+        <div
+          aria-hidden="true"
+          class="skeleton-card"
+        >
+          <span
+            class="skeleton-line skeleton-title"
+          />
+          <span
+            class="skeleton-line"
+          />
+          <span
+            class="skeleton-line skeleton-short"
+          />
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+   Ô£ô App ┬À elevar el estado: el contador de pendientes vive en App > al decidir un plan, el contador de la cabecera baja 157ms
+   Ô£ô App ┬À elevar el estado: el contador de pendientes vive en App > rechazar tambi├®n cuenta, y las decisiones sobreviven a recargar la p├ígina 174ms
+   Ô£ô App ┬À elevar el estado: el contador de pendientes vive en App > un plan aprobado aparece en el panel de ejecuci├│n del agente 120ms
+ ÔØ» src/test/Inbox.test.jsx (10 tests | 2 failed) 1513ms
+   Ô£ô Inbox ┬À decidir (las decisiones llegan por props) > separa pendientes y decididos seg├║n decisions 285ms
+   Ô£ô Inbox ┬À decidir (las decisiones llegan por props) > aprobar un plan R1 avisa al padre con onDecide(id, 'approved') 106ms
+   Ô£ô Inbox ┬À decidir (las decisiones llegan por props) > aprobar un plan R2 exige el hash exacto  333ms
+   Ô£ô Inbox ┬À el buscador usa useDebounce > el campo muestra lo escrito al instante, pero la lista espera 300 ms 128ms
+   Ô£ô Inbox ┬À el buscador usa useDebounce > sin coincidencias muestra el estado vac├¡o y Limpiar b├║squeda devuelve la lista 91ms
+   Ô£ô Inbox ┬À ejecuci├│n del agente con useAgentRun > sin planes aprobados no hay nada que ejecutar 35ms
+   Ô£ô Inbox ┬À ejecuci├│n del agente con useAgentRun > un plan R1 aprobado se ejecuta y termina aplicado, sin confirmaci├│n extra 123ms
+   ├ù Inbox ┬À ejecuci├│n del agente con useAgentRun > un plan R2 aprobado espera una ├║ltima confirmaci├│n antes de aplicarse 140ms
+     ÔåÆ Unable to find an element with the text: /Falta tu confirmaci├│n/. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<section
+  aria-labelledby="run-title"
+>
+  <h3
+    id="run-title"
+  >
+    Ejecuci├│n del agente
+  </h3>
+  <ul
+    class="run-list"
+  >
+    <li>
+      <span>
+        <code>
+          T-01
+        </code>
+         ┬À 
+        exams_destroy
+         ┬À 
+        Examen de ORM
+      </span>
+      <button
+        aria-label="Ejecutar T-01"
+        class="btn btn-ghost"
+        type="button"
+      >
+        Ejecutar
+      </button>
+    </li>
+    <li>
+      <span>
+        <code>
+          T-02
+        </code>
+         ┬À 
+        questions_create
+         ┬À 
+        ┬┐Qu├® hace values_list()?
+      </span>
+      <button
+        aria-label="Ejecutar T-02"
+        class="btn btn-ghost"
+        type="button"
+      >
+        Ejecutar
+      </button>
+    </li>
+  </ul>
+  <div
+    aria-label="Estado de la ejecuci├│n"
+    class="run-status run-done"
+    role="status"
+  >
+    <p>
+      T-01
+       aplicado (
+      ensayo
+      ).
+    </p>
+  </div>
+</section>
+   ├ù Inbox ┬À ejecuci├│n del agente con useAgentRun > Descartar vuelve al reposo sin aplicar nada 151ms
+     ÔåÆ Unable to find an accessible element with the role "button" and name "Descartar"
+
+Here are the accessible roles:
+
+  heading:
+
+  Name "Ejecuci├│n del agente":
+  <h3
+    id="run-title"
+  />
+
+  --------------------------------------------------list:
+
+  Name "":
+  <ul
+    class="run-list"
+  />
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  --------------------------------------------------
+  code:
+
+  Name "":
+  <code />
+
+  Name "":
+  <code />
+
+  --------------------------------------------------
+  button:
+
+  Name "Ejecutar T-01":
+  <button
+    aria-label="Ejecutar T-01"
+    class="btn btn-ghost"
+    type="button"
+  />
+
+  Name "Ejecutar T-02":
+  <button
+    aria-label="Ejecutar T-02"
+    class="btn btn-ghost"
+    type="button"
+  />
+
+  --------------------------------------------------status:
+
+  Name "Estado de la ejecuci├│n":
+  <div
+    aria-label="Estado de la ejecuci├│n"
+    class="run-status run-done"
+    role="status"
+  />
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<section
+  aria-labelledby="run-title"
+>
+  <h3
+    id="run-title"
+  >
+    Ejecuci├│n del agente
+  </h3>
+  <ul
+    class="run-list"
+  >
+    <li>
+      <span>
+        <code>
+          T-01
+        </code>
+         ┬À 
+        exams_destroy
+         ┬À 
+        Examen de ORM
+      </span>
+      <button
+        aria-label="Ejecutar T-01"
+        class="btn btn-ghost"
+        type="button"
+      >
+        Ejecutar
+      </button>
+    </li>
+    <li>
+      <span>
+        <code>
+          T-02
+        </code>
+         ┬À 
+        questions_create
+         ┬À 
+        ┬┐Qu├® hace values_list()?
+      </span>
+      <button
+        aria-label="Ejecutar T-02"
+        class="btn btn-ghost"
+        type="button"
+      >
+        Ejecutar
+      </button>
+    </li>
+  </ul>
+  <div
+    aria-label="Estado de la ejecuci├│n"
+    class="run-status run-done"
+    role="status"
+  >
+    <p>
+      T-01
+       aplicado (
+      ensayo
+      ).
+    </p>
+  </div>
+</section>
+   Ô£ô Inbox ┬À ejecuci├│n del agente con useAgentRun > si el agente falla, lo dice 116ms
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ» Failed Tests 20 ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+
+ FAIL  src/test/App.test.jsx > App ┬À carga con usePlans (cargando, datos y error) > 
+si la red falla muestra el error y Reintentar vuelve a cargar
+TestingLibraryElementError: Unable to find an accessible element with the role "alert"
+
+Here are the accessible roles:
+
+  main:
+
+  Name "":
+  <main
+    class="app"
+  />
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  <header
+    class="app-header"
+  />
+
+  --------------------------------------------------
+  heading:
+
+  Name "Los hooks del agente":
+  <h1 />
+
+  --------------------------------------------------
+  status:
+
+  Name "Contador de pendientes":
+  <p
+    aria-label="Contador de pendientes"
+    class="pending-counter"
+    role="status"
+  />
+
+  Name "Cargando planes":
+  <div
+    aria-label="Cargando planes"
+    class="skeleton"
+    role="status"
+  />
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p />
+
+  Name "":
+  <p
+    class="note"
+  />
+
+  --------------------------------------------------
+  checkbox:
+
+  Name "Simular fallo de red":
+  <input
+    type="checkbox"
+  />
+
+  --------------------------------------------------
+  button:
+
+  Name "Recargar planes":
+  <button
+    class="reload-link"
+    type="button"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <main
+      class="app"
+    >
+      <header
+        class="app-header"
+      >
+        <div
+          class="app-header-top"
+        >
+          <h1>
+            Los hooks del agente
+          </h1>
+          <p
+            aria-label="Contador de pendientes"
+            class="pending-counter"
+            role="status"
+          >
+            Pendientes: 
+            ÔÇª
+          </p>
+        </div>
+        <p>
+          Un agente de IA propone planes y una persona decide. Lo destructivo (R2) no se aprueba con un clic: hay 
+que escribir el hash del plan, y ni siquiera un plan aprobado se aplica sin una ├║ltima confirmaci├│n.
+        </p>
+        <p
+          class="note"
+        >
+          Todo es local: la red es simulada (src/lib/api.js). El l├¡mite de verdad lo impone el servidor (semana 
+8); aqu├¡ solo ayudamos a la persona a decidir bien.
+        </p>
+      </header>
+      <div
+        class="toolbar"
+      >
+        <label
+          class="network-toggle"
+        >
+          <input
+            type="checkbox"
+          />
+          Simular fallo de red
+        </label>
+        <button
+          class="reload-link"
+          type="button"
+        >
+          Recargar planes
+        </button>
+      </div>
+      <div
+        aria-label="Cargando planes"
+        class="skeleton"
+        role="status"
+      >
+        <div
+          aria-hidden="true"
+          class="skeleton-card"
+        >
+          <span
+            class="skeleton-line skeleton-title"
+          />
+          <span
+            class="skeleton-line"
+          />
+          <span
+            class="skeleton-line skeleton-short"
+          />
+        </div>
+        <div
+          aria-hidden="true"
+          class="skeleton-card"
+        >
+          <span
+            class="skeleton-line skeleton-title"
+          />
+          <span
+            class="skeleton-line"
+          />
+          <span
+            class="skeleton-line skeleton-short"
+          />
+        </div>
+        <div
+          aria-hidden="true"
+          class="skeleton-card"
+        >
+          <span
+            class="skeleton-line skeleton-title"
+          />
+          <span
+            class="skeleton-line"
+          />
+          <span
+            class="skeleton-line skeleton-short"
+          />
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+ ÔØ» Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ÔØ» node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ÔØ» node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ÔØ» node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ÔØ» src/test/App.test.jsx:54:19
+     52| 
+     53|     await act(async () => first.reject(new Error("Sin conexi├│n con la ÔÇª
+     54|     expect(screen.getByRole("alert")).toHaveTextContent("Sin conexi├│n ÔÇª
+       |                   ^
+     55|     expect(screen.queryByRole("status", { name: "Cargando planes" })).ÔÇª
+     56| 
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[1/20]ÔÄ»
+
+ FAIL  src/test/Inbox.test.jsx > Inbox ┬À ejecuci├│n del agente con useAgentRun > 
+un plan R2 aprobado espera una ├║ltima confirmaci├│n antes de aplicarse
+TestingLibraryElementError: Unable to find an element with the text: /Falta tu confirmaci├│n/. This 
+could be because the text is broken up by multiple elements. In this case, you can provide a function for your text 
+matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<section
+  aria-labelledby="run-title"
+>
+  <h3
+    id="run-title"
+  >
+    Ejecuci├│n del agente
+  </h3>
+  <ul
+    class="run-list"
+  >
+    <li>
+      <span>
+        <code>
+          T-01
+        </code>
+         ┬À 
+        exams_destroy
+         ┬À 
+        Examen de ORM
+      </span>
+      <button
+        aria-label="Ejecutar T-01"
+        class="btn btn-ghost"
+        type="button"
+      >
+        Ejecutar
+      </button>
+    </li>
+    <li>
+      <span>
+        <code>
+          T-02
+        </code>
+         ┬À 
+        questions_create
+         ┬À 
+        ┬┐Qu├® hace values_list()?
+      </span>
+      <button
+        aria-label="Ejecutar T-02"
+        class="btn btn-ghost"
+        type="button"
+      >
+        Ejecutar
+      </button>
+    </li>
+  </ul>
+  <div
+    aria-label="Estado de la ejecuci├│n"
+    class="run-status run-done"
+    role="status"
+  >
+    <p>
+      T-01
+       aplicado (
+      ensayo
+      ).
+    </p>
+  </div>
+</section>
+ ÔØ» Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ÔØ» node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ÔØ» node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ÔØ» node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ÔØ» src/test/Inbox.test.jsx:115:32
+    113|     await act(async () => 
+request.resolve({ summary: "ensayo" }));
+    114| 
+    115|     expect(within(runRegion()).getByText(/Falta tu confirmaci├│n/)).toBÔÇª
+       |                                ^
+    116|     expect(within(runRegion()).queryByText(/T-01 aplicado/)).not.toBeIÔÇª
+    117| 
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[2/20]ÔÄ»
+
+ FAIL  src/test/Inbox.test.jsx > Inbox ┬À ejecuci├│n del agente con useAgentRun > 
+Descartar vuelve al reposo sin aplicar nada
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name 
+"Descartar"
+
+Here are the accessible roles:
+
+  heading:
+
+  Name "Ejecuci├│n del agente":
+  <h3
+    id="run-title"
+  />
+
+  --------------------------------------------------list:
+
+  Name "":
+  <ul
+    class="run-list"
+  />
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  --------------------------------------------------
+  code:
+
+  Name "":
+  <code />
+
+  Name "":
+  <code />
+
+  --------------------------------------------------
+  button:
+
+  Name "Ejecutar T-01":
+  <button
+    aria-label="Ejecutar T-01"
+    class="btn btn-ghost"
+    type="button"
+  />
+
+  Name "Ejecutar T-02":
+  <button
+    aria-label="Ejecutar T-02"
+    class="btn btn-ghost"
+    type="button"
+  />
+
+  --------------------------------------------------status:
+
+  Name "Estado de la ejecuci├│n":
+  <div
+    aria-label="Estado de la ejecuci├│n"
+    class="run-status run-done"
+    role="status"
+  />
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<section
+  aria-labelledby="run-title"
+>
+  <h3
+    id="run-title"
+  >
+    Ejecuci├│n del agente
+  </h3>
+  <ul
+    class="run-list"
+  >
+    <li>
+      <span>
+        <code>
+          T-01
+        </code>
+         ┬À 
+        exams_destroy
+         ┬À 
+        Examen de ORM
+      </span>
+      <button
+        aria-label="Ejecutar T-01"
+        class="btn btn-ghost"
+        type="button"
+      >
+        Ejecutar
+      </button>
+    </li>
+    <li>
+      <span>
+        <code>
+          T-02
+        </code>
+         ┬À 
+        questions_create
+         ┬À 
+        ┬┐Qu├® hace values_list()?
+      </span>
+      <button
+        aria-label="Ejecutar T-02"
+        class="btn btn-ghost"
+        type="button"
+      >
+        Ejecutar
+      </button>
+    </li>
+  </ul>
+  <div
+    aria-label="Estado de la ejecuci├│n"
+    class="run-status run-done"
+    role="status"
+  >
+    <p>
+      T-01
+       aplicado (
+      ensayo
+      ).
+    </p>
+  </div>
+</section>
+ ÔØ» Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ÔØ» node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ÔØ» node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ÔØ» node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ÔØ» src/test/Inbox.test.jsx:129:42
+    127|     await user.click(within(runRegion()).getByRole("button", { name: "ÔÇª
+    128|     await act(async () => 
+request.resolve({ summary: "ensayo" }));
+    129|     await user.click(within(runRegion()).getByRole("button", { name: "ÔÇª
+       |                                          ^
+    130| 
+    131|     expect(within(runRegion()).getByText("Sin ejecuci├│n en curso.")).tÔÇª
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[3/20]ÔÄ»
+
+ FAIL  src/test/useAgentRun.test.jsx > useAgentRun ┬À un plan R2 no se aplica sin 
+aprobaci├│n > al terminar bien pasa a awaiting_approval (guarda el resultado) y NO a done
+AssertionError: expected 'done' to be 'awaiting_approval' // Object.is equality
+
+Expected: "awaiting_approval"
+Received: "done"
+
+ ÔØ» src/test/useAgentRun.test.jsx:93:35
+     91|     await finish(requests[0], { summary: 
+"ensayo" });
+     92| 
+     93|     expect(result.current.status).toBe("await
+ing_approval");
+       |                                   ^
+     94|     expect(result.current.result).toEqual({ 
+summary: "ensayo" });
+     95|     
+expect(result.current.plan).toBe(R2);
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[4/20]ÔÄ»
+
+ FAIL  src/test/useAgentRun.test.jsx > useAgentRun ┬À un plan R2 no se aplica sin 
+aprobaci├│n > solo approve() lo lleva a done, y pasa por todos los estados en orden
+AssertionError: expected [ 'idle', 'running', 'done' ] to deeply equal [ 'idle', 'running', ÔÇª(2) ]
+
+- Expected
++ Received
+
+  [
+    "idle",
+    "running",
+-   "awaiting_approval",
+    "done",
+  ]
+
+ ÔØ» src/test/useAgentRun.test.jsx:108:18
+    106|     
+expect(result.current.status).toBe("done");
+    107|     expect(result.current.result).toEqual({ 
+summary: "ensayo" });
+    108|     expect(seen).toEqual(["idle", "running", "awaiting_approval", "donÔÇª
+       |                  ^
+    109|   });
+    110| 
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[5/20]ÔÄ»
+
+ FAIL  src/test/useAgentRun.test.jsx > useAgentRun ┬À un plan R2 no se aplica sin 
+aprobaci├│n > approve() mientras corre no salta la barrera: al terminar sigue pidiendo aprobaci├│n
+AssertionError: expected 'done' to be 'awaiting_approval' // Object.is equality
+
+Expected: "awaiting_approval"
+Received: "done"
+
+ ÔØ» src/test/useAgentRun.test.jsx:119:35
+    117| 
+    118|     await finish(requests[0], { summary: 
+"ensayo" });
+    119|     expect(result.current.status).toBe("await
+ing_approval");
+       |                                   ^
+    120|     expect(seen).not.toContain("done");
+    121|   });
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[6/20]ÔÄ»
+
+ FAIL  src/test/useAgentRun.test.jsx > useAgentRun ┬À un plan R2 no se aplica sin 
+aprobaci├│n > reject() en awaiting_approval descarta el resultado y vuelve a idle
+AssertionError: expected { status: 'done', ÔÇª(6) } to match object { status: 'idle', plan: null, ÔÇª(2) 
+}
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "error": null,
+-   "plan": null,
+-   "result": null,
+-   "status": "idle",
++   "plan": {
++     "id": "T-01",
++     "op": "exams_destroy",
++     "plan_hash": "a1b2c3d4e5f6",
++     "proposed_by": "agente",
++     "risk": "R2",
++     "target": {
++       "id": 1,
++       "question_count": 4,
++       "title": "Examen de ORM",
++     },
++   },
++   "result": {
++     "summary": "ensayo",
++   },
++   "status": "done",
+  }
+
+ ÔØ» src/test/useAgentRun.test.jsx:130:28
+    128|     act(() => result.current.reject());
+    129| 
+    130|     expect(result.current).toMatchObject({ status: "idle", plan: null,ÔÇª
+       |                            ^
+    131|   });
+    132| 
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[7/20]ÔÄ»
+
+ FAIL  src/test/useAgentRun.test.jsx > useAgentRun ┬À cancelar, fallar y reintentar > 
+esperando aprobaci├│n tampoco se puede lanzar otra ejecuci├│n
+AssertionError: expected "spy" to be called 1 times, but got 2 times
+ ÔØ» src/test/useAgentRun.test.jsx:190:22
+    188|     await finish(requests[0], { summary: 
+"ensayo" });
+    189|     act(() => 
+result.current.start(R1));
+    190|     expect(runAgent).toHaveBeenCalledTimes(1);
+       |                      ^
+    191|     expect(result.current.status).toBe("await
+ing_approval");
+    192|   });
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[8/20]ÔÄ»
+
+ FAIL  src/test/useAgentRun.test.jsx > useAgentRun ┬À limpieza al desmontar > al 
+desmontar con una ejecuci├│n en curso aborta su se├▒al
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ÔØ» src/test/useAgentRun.test.jsx:215:28
+    213| 
+    214|     unmount();
+    215|     expect(signal.aborted).toBe(true);
+       |                            ^
+    216|   });
+    217| 
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[9/20]ÔÄ»
+
+ FAIL  src/test/useAgentRun.test.jsx > useAgentRun ┬À las reglas de los hooks > 
+si runAgent aparece en un dibujado posterior, el hook no se rompe y funciona
+AssertionError: expected [Function] to not throw an error but 'Error: Rendered more hooks than durinÔÇª' 
+was thrown
+
+- Expected: 
+undefined
+
++ Received: 
+"Error: Rendered more hooks than during the previous render."
+
+ ÔØ» src/test/useAgentRun.test.jsx:241:46
+    239| 
+    240|     const { runAgent, requests } = fakeAgent();
+    241|     expect(() => rerender({ runAgent 
+})).not.toThrow();
+       |                                              ^
+    242| 
+    243|     act(() => 
+result.current.start(R1));
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[10/20]ÔÄ»
+
+ FAIL  src/test/useDebounce.test.jsx > useDebounce ┬À cada cambio cancela el temporizador 
+anterior > un segundo cambio reinicia la cuenta: el valor intermedio no llega a devolverse
+AssertionError: expected 'b' to be 'a' // Object.is equality
+
+Expected: "a"
+Received: "b"
+
+ ÔØ» src/test/useDebounce.test.jsx:72:28
+     70| 
+     71|     tick(299);
+     72|     expect(result.current).toBe("a"); // desde el cambio a "c" solo haÔÇª
+       |                            ^
+     73| 
+     74|     tick(1);
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[11/20]ÔÄ»
+
+ FAIL  src/test/useDebounce.test.jsx > useDebounce ┬À cada cambio cancela el temporizador 
+anterior > tres cambios seguidos devuelven solo el ├║ltimo
+AssertionError: expected [ 'a', 'a', 'a', 'a', 'b', 'd' ] to not include 'b'
+ ÔØ» src/test/useDebounce.test.jsx:87:22
+     85|     tick(200);
+     86|     expect(result.current).toBe("d");
+     87|     expect(seen).not.toContain("b");
+       |                      ^
+     88|     expect(seen).not.toContain("c");
+     89|   });
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[12/20]ÔÄ»
+
+ FAIL  src/test/useDebounce.test.jsx > useDebounce ┬À cada cambio cancela el temporizador 
+anterior > si el valor vuelve al de antes dentro del retardo, nunca se devuelve el intermedio
+AssertionError: expected [ 'a', 'a', 'a', 'b', 'a' ] to not include 'b'
+ ÔØ» src/test/useDebounce.test.jsx:98:22
+     96|     for (let ms = 0; ms < 1000; ms += 50) tick(50); // paso a paso: caÔÇª
+     97|     expect(result.current).toBe("a");
+     98|     expect(seen).not.toContain("b");
+       |                      ^
+     99|   });
+    100| 
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[13/20]ÔÄ»
+
+ FAIL  src/test/useDebounce.test.jsx > useDebounce ┬À cada cambio cancela el temporizador 
+anterior > si cambia delay se vuelve a contar desde cero con el nuevo retardo
+AssertionError: expected 'b' to be 'a' // Object.is equality
+
+Expected: "a"
+Received: "b"
+
+ ÔØ» src/test/useDebounce.test.jsx:108:28
+    106| 
+    107|     tick(499);
+    108|     expect(result.current).toBe("a");
+       |                            ^
+    109| 
+    110|     tick(1);
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[14/20]ÔÄ»
+
+ FAIL  src/test/useDebounce.test.jsx > useDebounce ┬À limpieza al desmontar > al 
+desmontar con varios cambios en el aire no queda ning├║n temporizador vivo
+AssertionError: expected 2 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 2
+
+ ÔØ» src/test/useDebounce.test.jsx:127:32
+    125|     rerender({ value: "c", delay: 300 
+});
+    126|     unmount();
+    127|     
+expect(vi.getTimerCount()).toBe(0);
+       |                                ^
+    128|   });
+    129| 
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[15/20]ÔÄ»
+
+ FAIL  src/test/usePlans.test.jsx > usePlans ┬À los tres estados > si la 
+petici├│n falla pasa a error, con el error y sin planes
+AssertionError: expected 'loading' to be 'error' // Object.is equality
+
+Expected: "error"
+Received: "loading"
+
+ ÔØ» src/test/usePlans.test.jsx:58:35
+     56|     await rejectWith(request, failure);
+     57| 
+     58|     
+expect(result.current.status).toBe("error");
+       |                                   ^
+     59|     
+expect(result.current.error).toBe(failure);
+     60|     
+expect(result.current.plans).toEqual([]);
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[16/20]ÔÄ»
+
+ FAIL  src/test/usePlans.test.jsx > usePlans ┬À reload > despu├®s de un error, 
+reload() limpia el error y puede terminar bien
+AssertionError: expected 'loading' to be 'error' // Object.is equality
+
+Expected: "error"
+Received: "loading"
+
+ ÔØ» src/test/usePlans.test.jsx:98:35
+     96|     const { result } = renderHook(() => 
+usePlans(fetchPlans));
+     97|     await rejectWith(first, new Error("Sin 
+conexi├│n"));
+     98|     
+expect(result.current.status).toBe("error");
+       |                                   ^
+     99| 
+    100|     act(() => result.current.reload());
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[17/20]ÔÄ»
+
+ FAIL  src/test/usePlans.test.jsx > usePlans ┬À ignora la respuesta vieja (carrera de 
+peticiones) > si la primera respuesta llega DESPU├ëS de la segunda, no pisa a la nueva
+AssertionError: expected [ { id: 'T-01', ÔÇª(5) }, ÔÇª(1) ] to deeply equal [ { id: 'T-03', ÔÇª(5) }, 
+ÔÇª(1) ]
+
+- Expected
++ Received
+
+  [
+    {
+-     "id": "T-03",
+-     "op": "questions_destroy",
+-     "plan_hash": "112233445566",
++     "id": "T-01",
++     "op": "exams_destroy",
++     "plan_hash": "a1b2c3d4e5f6",
+      "proposed_by": "agente",
+      "risk": "R2",
+      "target": {
+-       "id": 7,
+-       "text": "┬┐Qu├® es el contexto de una plantilla?",
++       "id": 1,
++       "question_count": 4,
+
++       "title": "Examen de ORM",
+      },
+    },
+    {
+-     "id": "T-04",
++     "id": "T-02",
+      "op": "questions_create",
+-     "plan_hash": "99aabbccddee",
++     "plan_hash": "0f9e8d7c6b5a",
+      "proposed_by": "agente",
+      "risk": "R1",
+      "target": {
+-       "exam": 2,
+-       "text": "┬┐Para qu├® sirve csrf_token?",
++       "exam": 1,
++       "text": "┬┐Qu├® hace values_list()?",
+      },
+    },
+  ]
+
+ ÔØ» src/test/usePlans.test.jsx:132:34
+    130|     await resolveWith(first, plansA); // llega 
+tarde
+    131|     
+expect(result.current.status).toBe("ready");
+    132|     
+expect(result.current.plans).toEqual(plansB);
+       |                                  ^
+    133|   });
+    134| 
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[18/20]ÔÄ»
+
+ FAIL  src/test/usePlans.test.jsx > usePlans ┬À ignora la respuesta vieja (carrera de 
+peticiones) > si cambia la funci├│n fetchPlans, la respuesta de la anterior se ignora
+AssertionError: expected [ { id: 'T-01', ÔÇª(5) }, ÔÇª(1) ] to deeply equal [ { id: 'T-03', ÔÇª(5) }, 
+ÔÇª(1) ]
+
+- Expected
++ Received
+
+  [
+    {
+-     "id": "T-03",
+-     "op": "questions_destroy",
+-     "plan_hash": "112233445566",
++     "id": "T-01",
++     "op": "exams_destroy",
++     "plan_hash": "a1b2c3d4e5f6",
+      "proposed_by": "agente",
+      "risk": "R2",
+      "target": {
+-       "id": 7,
+-       "text": "┬┐Qu├® es el contexto de una plantilla?",
++       "id": 1,
++       "question_count": 4,
++       "title": "Examen de ORM",
+      },
+    },
+    {
+-     "id": "T-04",
++     "id": "T-02",
+      "op": "questions_create",
+-     "plan_hash": "99aabbccddee",
++     "plan_hash": "0f9e8d7c6b5a",
+      "proposed_by": "agente",
+      "risk": "R1",
+      "target": {
+-       "exam": 2,
+-       "text": "┬┐Para qu├® sirve csrf_token?",
++       "exam": 1,
++       "text": "┬┐Qu├® hace values_list()?",
+ Test Files  5 failed (5)
+      Tests  20 failed | 37 passed (57)
+   Start at  11:11:24
+   Duration  5.08s (transform 682ms, setup 2.57s, collect 1.84s, tests 3.00s, environment 7.86s, prepare 1.42s)
+
+      },
+    },
+  ]
+
+ ÔØ» src/test/usePlans.test.jsx:164:34
+    162|     await resolveWith(old, plansA);
+    163| 
+    164|     
+expect(result.current.plans).toEqual(plansB);
+       |                                  ^
+    165|   });
+    166| 
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[19/20]ÔÄ»
+
+ FAIL  src/test/usePlans.test.jsx > usePlans ┬À ignora la respuesta vieja (carrera de 
+peticiones) > con StrictMode (como en desarrollo) el efecto corre dos veces y gana la respuesta de la segunda
+AssertionError: expected [ { id: 'T-01', ÔÇª(5) }, ÔÇª(1) ] to deeply equal [ { id: 'T-03', ÔÇª(5) }, 
+ÔÇª(1) ]
+
+- Expected
++ Received
+
+  [
+    {
+-     "id": "T-03",
+-     "op": "questions_destroy",
+-     "plan_hash": "112233445566",
++     "id": "T-01",
++     "op": "exams_destroy",
++     "plan_hash": "a1b2c3d4e5f6",
+      "proposed_by": "agente",
+      "risk": "R2",
+      "target": {
+-       "id": 7,
+-       "text": "┬┐Qu├® es el contexto de una plantilla?",
++       "id": 1,
++       "question_count": 4,
++       "title": "Examen de ORM",
+      },
+    },
+    {
+-     "id": "T-04",
++     "id": "T-02",
+      "op": "questions_create",
+-     "plan_hash": "99aabbccddee",
++     "plan_hash": "0f9e8d7c6b5a",
+      "proposed_by": "agente",
+      "risk": "R1",
+      "target": {
+-       "exam": 2,
+-       "text": "┬┐Para qu├® sirve csrf_token?",
++       "exam": 1,
++       "text": "┬┐Qu├® hace values_list()?",
+      },
+    },
+  ]
+
+ ÔØ» src/test/usePlans.test.jsx:178:34
+    176| 
+    177|     
+expect(result.current.status).toBe("ready");
+    178|     
+expect(result.current.plans).toEqual(plansB);
+       |                                  ^
+    179|   });
+    180| });
+
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»[20/20]ÔÄ»
+
+
